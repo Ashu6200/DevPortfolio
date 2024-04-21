@@ -12,7 +12,7 @@ const getAllBlog = cache(async () => {
   });
   return data;
 })
-const Blog = async () => {
+const Page = async () => {
   const data = await getAllBlog();
   return (
     <Protected>
@@ -40,4 +40,4 @@ const Blog = async () => {
   );
 };
 
-export default Blog;
+export default Page;

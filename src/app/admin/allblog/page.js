@@ -8,7 +8,7 @@ const getAllBlog = cache(async () => {
   });
   return data;
 })
-const AllBlogPage = async () => {
+const Page = async () => {
   const data = await getAllBlog();
   return (
     <div className='w-full h-full overflow-y-scroll'>
@@ -26,4 +26,4 @@ const AllBlogPage = async () => {
   );
 };
 
-export default AllBlogPage;
+export default Page;

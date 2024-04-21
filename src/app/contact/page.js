@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import { Protected } from "@/utils/ProtectedRoutes";
 import React from "react";
 
-const Contact = () => {
+const Page = () => {
   return (
     <Protected>
       <Navbar />
@@ -22,4 +22,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Page;

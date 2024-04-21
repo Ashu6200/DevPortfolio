@@ -12,7 +12,7 @@ export const getSingleBlog = cache(async (id) => {
   })
   return data;
 })
-const SingleBlog = async ({ params }) => {
+const Page = async ({ params }) => {
   const data = await getSingleBlog(params.id);
   return (
     <Protected>
@@ -68,4 +68,4 @@ const SingleBlog = async ({ params }) => {
   );
 };
 
-export default SingleBlog;
+export default Page;

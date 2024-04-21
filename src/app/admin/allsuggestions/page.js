@@ -2,7 +2,7 @@ import SuggestionCard from "@/components/SuggestionCard";
 import axios from "axios";
 import React from "react";
 
-const AllsuggestionsPage = async () => {
+const Page = async () => {
   const { data } = await axios.get(
     `${process.env.NEXTAUTH_URL}/api/suggestion`,
     {
@@ -27,4 +27,4 @@ const AllsuggestionsPage = async () => {
   );
 };
 
-export default AllsuggestionsPage;
+export default Page;

@@ -10,7 +10,7 @@ const getAllProject = cache(async () => {
   return data;
 })
 
-const AllProjectsPage = async () => {
+const Page = async () => {
   const data = await getAllProject() || [];
   return (
     <div className='w-full h-full overflow-y-scroll'>
@@ -28,4 +28,4 @@ const AllProjectsPage = async () => {
   );
 };
 
-export default AllProjectsPage;
+export default Page;

@@ -13,7 +13,7 @@ export const getSingleProject = cache(async (id) => {
   })
   return data;
 })
-const SingleProject = async ({ params }) => {
+const Page = async ({ params }) => {
   const data = await getSingleProject(params.id);
   return (
     <Protected>
@@ -89,4 +89,4 @@ const SingleProject = async ({ params }) => {
   );
 };
 
-export default SingleProject;
+export default Page;

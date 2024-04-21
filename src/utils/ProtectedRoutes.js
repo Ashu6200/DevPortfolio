@@ -4,20 +4,14 @@ import { redirect } from "next/navigation";
 
 export const AdminProtected = ({ children }) => {
   const { data: session } = useSession();
-  const userSession = localStorage.getItem("protofolio")
-    ? JSON.parse(localStorage.getItem("protofolio"))
-    : null;
-  const pass = userSession || session
+  const pass = session
   if (pass) {
     const isAdmin = pass.user.isAdmin;
     return isAdmin ? children : redirect("/");
   }
 };
 export const Protected = ({ children }) => {
-  const userSession = localStorage.getItem("protofolio")
-    ? JSON.parse(localStorage.getItem("protofolio"))
-    : null;
   const { data: session } = useSession();
-  const pass = userSession || session
+  const pass = session
   return pass ? children : redirect("/authentication");
 };

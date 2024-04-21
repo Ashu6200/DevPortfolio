@@ -13,7 +13,7 @@ const getAllProject = cache(async () => {
   return data;
 })
 
-const Project = async () => {
+const Page = async () => {
   const data = await getAllProject();
   return (
     <Protected>
@@ -41,4 +41,4 @@ const Project = async () => {
   );
 };
 
-export default Project;
+export default Page;

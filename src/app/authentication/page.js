@@ -8,7 +8,6 @@ const Auth = () => {
   const { data: session } = useSession();
   useEffect(() => {
     if (session) {
-      localStorage.setItem("protofolio", JSON.stringify(session));
       redirect("/");
     }
   }, [session]);
