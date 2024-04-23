@@ -1,11 +1,10 @@
-import EditBlog from "@/components/EditBlog";
-// import dynamic from "next/dynamic";
 import React from "react";
+import dynamic from "next/dynamic";
 
-// const DynamicEditBlog = dynamic(async () => import("@/components/EditBlog"), {
-//   ssr: false,
-//   loading: () => <p>Loading...</p>,
-// });
+const DynamicEditBlog = dynamic(async () => import("@/components/EditBlog"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 const Page = ({ params }) => {
   const blogId = params.id;
@@ -14,8 +13,7 @@ const Page = ({ params }) => {
       <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white'>
         Edit Blog
       </h1>
-      {/* <DynamicEditBlog blogId={blogId} /> */}
-      <EditBlog blogId={blogId} />
+      <DynamicEditBlog blogId={blogId} />
     </div>
   );
 };

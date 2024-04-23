@@ -1,14 +1,22 @@
+"use client"
 import AdminBlogCard from "@/components/AdminBlogCard";
 import axios from "axios";
-import React, { cache } from "react";
+import React, { cache, useEffect, useState } from "react";
 
-const getAllBlog = cache(async () => {
-  const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/blog`);
-  return data;
-})
-const Page = async () => {
-  const getData = await getAllBlog();
-  const data = getData || [];
+const Page = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = cache(async () => {
+      try {
+        const res = await axios.get(`/api/blog`);
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    })
+    getData()
+  }, [])
+
   return (
     <div className='w-full h-full overflow-y-scroll'>
       <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white z-20'>

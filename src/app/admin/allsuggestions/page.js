@@ -1,12 +1,21 @@
+'use client'
 import SuggestionCard from "@/components/SuggestionCard";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const Page = async () => {
-  const res = await axios.get(
-    `${process.env.NEXTAUTH_URL}/api/suggestion`,
-  );
-  const data = res.data || [];
+const Page = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get(`/api/suggestion`);
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getData()
+  }, [])
   return (
     <div className='w-full h-full overflow-y-scroll'>
       <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white'>

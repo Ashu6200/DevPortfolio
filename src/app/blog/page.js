@@ -1,20 +1,24 @@
-import React, { cache } from "react";
+"use client"
+import React, { cache, useEffect, useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Protected } from "@/utils/ProtectedRoutes";
 import axios from "axios";
 
-
-const getAllBlog = cache(async () => {
-  const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/blog`, {
-    next: { cache: "force-cache" }
-  });
-  return data;
-})
-const Page = async () => {
-  const getData = await getAllBlog();
-  const data = getData || [];
+const Page = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = cache(async () => {
+      try {
+        const res = await axios.get(`/api/blog`);
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    })
+    getData()
+  }, [])
   return (
     <Protected>
       <Navbar />

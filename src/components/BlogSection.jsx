@@ -1,17 +1,22 @@
-import React, { cache } from "react";
+"use client";
+import React, { cache, useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import axios from "axios";
 
-const getAllBlog = cache(async () => {
-  const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/blog`, {
-    next: { cache: "force-cache" }
-  });
-  return data;
-})
 
-const BlogSection = async () => {
-  const getData = await getAllBlog();
-  const res = getData || []
+const BlogSection = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = cache(async () => {
+      try {
+        const res = await axios.get(`/api/blog`);
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    })
+    getData()
+  }, [])
   return (
     <div className='w-full px-40 max-[890px]:px-[50px] max-[480px]:px-[20px] '>
       <div className=' text-center py-16'>

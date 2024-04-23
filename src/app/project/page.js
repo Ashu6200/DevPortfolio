@@ -1,4 +1,5 @@
-import React, { cache } from "react";
+"use client"
+import React, { cache, useEffect, useState } from "react";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import ProjectCard from "@/components/ProjectCard";
@@ -6,16 +7,20 @@ import { Protected } from "@/utils/ProtectedRoutes";
 import axios from "axios";
 
 
-const getAllProject = cache(async () => {
-  const { data } = await axios.get(`${process.env.NEXTAUTH_URL}/api/work`, {
-    next: { cache: "force-cache" }
-  });
-  return data;
-})
 
-const Page = async () => {
-  const getData = await getAllProject();
-  const data = getData || [];
+const Page = () => {
+  const [data, setData] = useState([])
+  useEffect(() => {
+    const getData = cache(async () => {
+      try {
+        const res = await axios.get(`/api/work`);
+        setData(res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    })
+    getData()
+  }, [])
   return (
     <Protected>
       <Navbar />
