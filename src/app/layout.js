@@ -13,7 +13,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: `Ashu's Protofolio`,
+  title: `Ashu's Protfolio`,
   description: "MERN stack Developer",
 };
 
