@@ -22,10 +22,7 @@ const EditBlog = ({ blogId }) => {
     const getProjectData = async () => {
       try {
         const res = await axios.get(`/api/blog/${blogId}`);
-        if (res.status === 200 && res.statusText === "OK") {
-          console.log(res.data, "blog successfully 26");
-          setEditblogData(res.data);
-        }
+        setEditblogData(res.data);
       } catch (error) {
         console.error("Error deleting Project", error);
       }

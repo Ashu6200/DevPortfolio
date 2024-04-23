@@ -28,10 +28,7 @@ const Editproject = ({ projectId }) => {
       setLoadingData(true);
       try {
         const res = await axios.get(`/api/work/${projectId}`);
-        if (res.status === 200 && res.statusText === "OK") {
-          console.log(res.data, "Project successfully 32");
-          setEditProjectData(res.data);
-        }
+        setEditProjectData(res.data);
       } catch (error) {
         console.error("Error fetching project data", error);
         toast.error("Failed to fetch project data");
