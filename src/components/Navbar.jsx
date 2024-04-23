@@ -18,9 +18,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const logout = (e) => {
     e.preventDefault();
-    localStorage.removeItem("protofolio");
     signOut();
-    redirect(`/`);
+    router.push(`/`)
   };
   useEffect(() => {
     const scrolledNav = () => {
