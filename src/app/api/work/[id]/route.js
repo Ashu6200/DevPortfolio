@@ -14,7 +14,6 @@ export const GET = async (request, { params }) => {
         error: "Project not found",
       });
     }
-
     return new NextResponse(JSON.stringify(project), { status: 200 });
   } catch (error) {
     return new NextResponse({ status: 500, error: error.message });

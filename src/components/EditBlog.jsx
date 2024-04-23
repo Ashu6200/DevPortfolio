@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Highlight from "./Highlight";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -9,20 +9,6 @@ import { useRouter } from "next/navigation";
 const EditBlog = ({ blogId }) => {
   const router = useRouter();
   const [editblogData, setEditblogData] = useState({});
-  const getProjectData = useCallback(async () => {
-    try {
-      const res = await axios.get(`/api/blog/${blogId}`);
-      if (res.status === 200 && res.statusText === "OK") {
-        setEditblogData(res.data);
-      }
-    } catch (error) {
-      console.error("Error deleting Project", error);
-    }
-  }, [blogId]);
-
-  useEffect(() => {
-    getProjectData();
-  }, [getProjectData]);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -32,6 +18,31 @@ const EditBlog = ({ blogId }) => {
   const [imageBlog, setImageBlog] = useState(null);
   const [dragging, setDragging] = useState(false);
 
+  useEffect(() => {
+    const getProjectData = async () => {
+      try {
+        const res = await axios.get(`/api/blog/${blogId}`);
+        if (res.status === 200 && res.statusText === "OK") {
+          console.log(res.data, "blog successfully 26");
+          setEditblogData(res.data);
+        }
+      } catch (error) {
+        console.error("Error deleting Project", error);
+      }
+    };
+    getProjectData();
+  }, [blogId]);
+
+  useEffect(() => {
+    if (editblogData) {
+      setTitle(editblogData.title);
+      setDescription(editblogData.description);
+      setHighlight(
+        editblogData.higlights || [{ title: "Untitled Title", points: [""] }]
+      );
+      setImageBlog(editblogData.imageBlog);
+    }
+  }, [editblogData]);
   const handleFileChange = (e) => {
     e.preventDefault();
     const file = e.target.files[0];
@@ -45,16 +56,6 @@ const EditBlog = ({ blogId }) => {
       fileReader.readAsDataURL(file);
     }
   };
-  useEffect(() => {
-    if (editblogData) {
-      setTitle(editblogData.title);
-      setDescription(editblogData.description);
-      setHighlight(
-        editblogData.higlights || [{ title: "Untitled Title", points: [""] }]
-      );
-      setImageBlog(editblogData.imageBlog);
-    }
-  }, [editblogData]);
   const handleDragOver = (e) => {
     e.preventDefault();
     setDragging(true);
@@ -92,12 +93,12 @@ const EditBlog = ({ blogId }) => {
       if (res.status === 200 && res.statusText === "OK") {
         console.log(res.blog);
         toast.success("Blog successfully Edit");
+        setTimeout(() => {
+          router.push("/admin/allblog");
+        }, 2000);
       } else {
         toast.error("Failed to post blog");
       }
-      setTimeout(() => {
-        router.push("/admin/allblog");
-      }, 2000);
     } catch (error) {
       console.error("Error posting blog", error);
       toast.error("An error occurred");
@@ -144,9 +145,8 @@ const EditBlog = ({ blogId }) => {
         />
         <label
           htmlFor='file'
-          className={`w-full min-h-[10vh] border dark:border-[#755BB4] p-3 flex flex-col items-center justify-center rounded-[5px] mt-2 ${
-            dragging ? "bg-blue-500" : "bg-transparent"
-          }`}
+          className={`w-full min-h-[10vh] border dark:border-[#755BB4] p-3 flex flex-col items-center justify-center rounded-[5px] mt-2 ${dragging ? "bg-blue-500" : "bg-transparent"
+            }`}
           onDrag={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}

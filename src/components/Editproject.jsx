@@ -10,23 +10,6 @@ import { useRouter } from "next/navigation";
 const Editproject = ({ projectId }) => {
   const router = useRouter();
   const [editProjectData, setEditProjectData] = useState({});
-  useEffect(() => {
-    const getProjectData = async () => {
-      setLoadingData(true);
-      try {
-        const res = await axios.get(`/api/work/${projectId}`);
-        if (res.status === 200 && res.statusText === "OK") {
-          setEditProjectData(res.data);
-        }
-      } catch (error) {
-        console.error("Error deleting Project", error);
-      } finally {
-        setLoadingData(false);
-      }
-    };
-    getProjectData();
-  }, [projectId]);
-
   const [loadingData, setLoadingData] = useState(false);
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
@@ -39,6 +22,25 @@ const Editproject = ({ projectId }) => {
   const [liveLink, setLiveLink] = useState("");
   const [technologies, setTechnologies] = useState([]);
   const [rating, setRating] = useState();
+
+  useEffect(() => {
+    const getProjectData = async () => {
+      setLoadingData(true);
+      try {
+        const res = await axios.get(`/api/work/${projectId}`);
+        if (res.status === 200 && res.statusText === "OK") {
+          console.log(res.data, "Project successfully 32");
+          setEditProjectData(res.data);
+        }
+      } catch (error) {
+        console.error("Error fetching project data", error);
+        toast.error("Failed to fetch project data");
+      } finally {
+        setLoadingData(false);
+      }
+    };
+    getProjectData();
+  }, [projectId]);
 
   useEffect(() => {
     if (editProjectData) {
@@ -115,16 +117,16 @@ const Editproject = ({ projectId }) => {
     try {
       const res = await axios.put(`/api/work/${projectId}`, data);
       if (res.status === 200 && res.statusText === "OK") {
-        toast.success("Project successfully Edited");
+        toast.success("Project successfully edited");
+        setTimeout(() => {
+          router.push("/admin/allprojects");
+        }, 2000);
       } else {
-        toast.error("Failed to edit Pproject");
+        toast.error("Failed to edit project");
       }
-      setTimeout(() => {
-        router.push("/admin/allprojects");
-      }, 2000);
     } catch (error) {
-      console.error("Error edit project", error);
-      toast.error("An error occurred");
+      console.error("Error editing project", error);
+      toast.error("An error occurred while editing project");
     } finally {
       setLoading(false);
     }
