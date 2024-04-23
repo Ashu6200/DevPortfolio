@@ -13,7 +13,8 @@ const getAllBlog = cache(async () => {
   return data;
 })
 const Page = async () => {
-  const data = await getAllBlog();
+  const getData = await getAllBlog();
+  const data = getData || [];
   return (
     <Protected>
       <Navbar />

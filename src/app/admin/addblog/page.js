@@ -1,9 +1,10 @@
-import dynamic from "next/dynamic";
+import AddBlog from "@/components/AddBlog";
+// import dynamic from "next/dynamic";
 import React from "react";
-const DynamicAddBlog = dynamic(async () => import("@/components/AddBlog"), {
-  ssr: false,
-  loading: () => <p>Loading...</p>,
-});
+// const DynamicAddBlog = dynamic(async () => import("@/components/AddBlog"), {
+//   ssr: false,
+//   loading: () => <p>Loading...</p>,
+// });
 
 const Page = () => {
   return (
@@ -11,7 +12,8 @@ const Page = () => {
       <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white'>
         Add Blog
       </h1>
-      <DynamicAddBlog />
+      {/* <DynamicAddBlog /> */}
+      <AddBlog />
     </div>
   );
 };

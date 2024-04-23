@@ -10,7 +10,8 @@ const getAllBlog = cache(async () => {
 })
 
 const BlogSection = async () => {
-  const data = await getAllBlog();
+  const getData = await getAllBlog();
+  const res = getData || []
   return (
     <div className='w-full px-40 max-[890px]:px-[50px] max-[480px]:px-[20px] '>
       <div className=' text-center py-16'>

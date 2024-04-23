@@ -1,8 +1,8 @@
 import "./globals.css";
 import { ThemeProvider } from "@/utils/theme-provider";
 import { Poppins } from "next/font/google";
-import { Suspense } from "react";
-import Loading from "@/components/Loading";
+// import { Suspense } from "react";
+// import Loading from "@/components/Loading";
 import AuthProvider from "@/utils/AuthProvider";
 import { Toaster } from "react-hot-toast";
 
@@ -25,10 +25,10 @@ export default function RootLayout({ children }) {
       >
         <AuthProvider>
           <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
-            <Suspense fallback={<Loading />}>
-              <Toaster position='top-right' />
-              {children}
-            </Suspense>
+            {/* <Suspense fallback={<Loading />}> */}
+            <Toaster position='top-right' />
+            {children}
+            {/* </Suspense> */}
           </ThemeProvider>
         </AuthProvider>
       </body>

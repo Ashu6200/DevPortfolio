@@ -3,15 +3,21 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 
 export const AdminProtected = ({ children }) => {
-  const { data: session } = useSession();
-  const pass = session
-  if (pass) {
-    const isAdmin = pass.user.isAdmin;
+  const d = useSession();
+  let data = null;
+  if (d) {
+    data = d.data;
+  }
+  if (data) {
+    const isAdmin = data.user.isAdmin;
     return isAdmin ? children : redirect("/");
   }
 };
 export const Protected = ({ children }) => {
-  const { data: session } = useSession();
-  const pass = session
-  return pass ? children : redirect("/authentication");
+  const d = useSession();
+  let data = null;
+  if (d) {
+    data = d.data;
+  }
+  return data ? children : redirect("/authentication");
 };

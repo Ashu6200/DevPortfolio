@@ -14,7 +14,8 @@ const getAllProject = cache(async () => {
 })
 
 const Page = async () => {
-  const data = await getAllProject();
+  const getData = await getAllProject();
+  const data = getData || [];
   return (
     <Protected>
       <Navbar />
