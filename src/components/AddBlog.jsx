@@ -69,8 +69,9 @@ const AddBlog = () => {
     try {
       const res = await axios.post("/api/blog", data);
       if (res.status === 200 && res.statusText === "OK") {
+        console.log(res.data);
         toast.success("Blog successfully posted");
-        reseTFields();
+        // reseTFields();
       } else {
         toast.error("Failed to post blog");
       }
@@ -120,9 +121,8 @@ const AddBlog = () => {
         />
         <label
           htmlFor='file'
-          className={`w-full min-h-[10vh] border dark:border-[#755BB4] p-3 flex flex-col items-center justify-center rounded-[5px] mt-2 ${
-            dragging ? "bg-blue-500" : "bg-transparent"
-          }`}
+          className={`w-full min-h-[10vh] border dark:border-[#755BB4] p-3 flex flex-col items-center justify-center rounded-[5px] mt-2 ${dragging ? "bg-blue-500" : "bg-transparent"
+            }`}
           onDrag={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}

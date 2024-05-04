@@ -45,7 +45,7 @@ const Page = async ({ params }) => {
                   <h2 className='text-[24px] font-[600] text-start text-[#755BB4]'>
                     {item.title}
                   </h2>
-                  <ul style={{ listStyleType: "disc" }} className='ml-4'>
+                  <ul style={{ listStyleType: "disc" }} className='font-[600] text-[14px] text-start mb-1'>
                     {item.points.map(point => {
                       return (
                         <li
@@ -64,7 +64,7 @@ const Page = async ({ params }) => {
         </div>
       </section>
       <Footer />
-    </Protected>
+    </Protected >
   );
 };
 

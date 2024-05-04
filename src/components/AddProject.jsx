@@ -19,7 +19,7 @@ const AddProject = () => {
   const [technologies, setTechnologies] = useState([]);
   const [rating, setRating] = useState();
 
-  const handleTechnologiesChange = skills => {
+  const handleTechnologiesChange = (skills) => {
     setTechnologies(skills);
   };
 
@@ -224,8 +224,9 @@ const AddProject = () => {
           isMulti
           classNamePrefix='select'
           options={technologies}
-          getOptionLabel={(option) => option.value}
           styles={colourStyles}
+          getOptionLabel={(option) => option.value}
+          getOptionValue={(option) => option.value}
           onChange={handleTechnologiesChange}
           className='basic-multi-select bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-0 outline-none mb-4  dark:!text-[#fff] !text-black '
         />

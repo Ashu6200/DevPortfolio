@@ -43,11 +43,11 @@ const Editproject = ({ projectId }) => {
     if (editProjectData) {
       setTitle(editProjectData.title);
       setDescription(editProjectData.description);
-      setKeyPoints(editProjectData.keyPoints);
+      setKeyPoints(editProjectData.keyPoints || [{ title: "Untitled Title", points: [""] }]);
       setProjectImage(editProjectData.projectImage);
       setGithubLink(editProjectData.githubLink);
       setLiveLink(editProjectData.liveLink);
-      setTechnologies(editProjectData.technologies);
+      setTechnologies(editProjectData.technologies ? editProjectData.technologies.map((skill) => ({ value: skill })) : []);
       setRating(editProjectData.rating);
     }
   }, [editProjectData]);
@@ -248,14 +248,15 @@ const Editproject = ({ projectId }) => {
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>Skills</label>
+        <label className='pb-2 dark:text-[#fff] text-black '>Technologies</label>
         <CreatableSelect
           isClearable
           isMulti
           classNamePrefix='select'
-          options={technologies && technologies}
+          options={technologies}
           styles={colourStyles}
-          getOptionLabel={(option) => option}
+          getOptionLabel={(option) => option.value}
+          getOptionValue={(option) => option.value}
           onChange={handleTechnologiesChange}
           className='basic-multi-select bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-0 outline-none mb-4  dark:!text-[#fff] !text-black '
         />

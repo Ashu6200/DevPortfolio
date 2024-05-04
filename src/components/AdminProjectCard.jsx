@@ -51,6 +51,15 @@ const AdminProjectCard = ({ project }) => {
           <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>
             {project.description}
           </p>
+          <div className="flex flex-wrap gap-3 mt-3">
+            {project.technologies && project.technologies.map((tech, key) => {
+              return (
+                <p key={key} className="dark:text-white text-black bg-[#755BB4] py-1 px-[10px] rounded-2xl capitalize">
+                  {tech}
+                </p>
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>

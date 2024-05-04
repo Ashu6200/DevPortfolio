@@ -26,18 +26,15 @@ const ProjectCard = ({ item }) => {
             <p className='dark:text-white text-black font-[600] text-[16px] text-start'>
               Skills :{" "}
             </p>
-            <ul className={`flex flex-wrap gap-2`}>
-              {item.technologies.map((sk, i) => {
+            <div className="flex flex-wrap gap-3 mt-3">
+              {item.technologies && item.technologies.map((tech, key) => {
                 return (
-                  <li
-                    key={i}
-                    className='text-[#755BB4] font-[600] text-[14px] uppercase'
-                  >
-                    {sk},
-                  </li>
-                );
+                  <p key={key} className="dark:text-white text-black bg-[#755BB4] py-1 px-[10px] rounded-2xl capitalize">
+                    {tech}
+                  </p>
+                )
               })}
-            </ul>
+            </div>
           </div>
         </div>
       </Link>

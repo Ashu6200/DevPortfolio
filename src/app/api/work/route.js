@@ -3,6 +3,13 @@ import ProjectModel from "@/models/projectModel";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/authOptions";
 import { getServerSession } from "next-auth";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 export const GET = async (req, res) => {
   await connectToDB();
@@ -33,21 +40,15 @@ export const POST = async (request, response) => {
     const data = await request.json();
     let uploadedImageData;
     if (data.projectImage) {
-      const uploadResponse = await fetch(
-        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-        {
-          method: "POST",
-          body: data.projectImage,
-        }
-      );
-      if (!uploadResponse.ok) {
-        throw new Error("Failed to upload image to Cloudinary.");
-      }
-      uploadedImageData = await uploadResponse.json();
+      const fileBuffer = Buffer.from(data.projectImage, "base64");
+      const result = await cloudinary.uploader.upload(fileBuffer, {
+        invalidate: true,
+      });
+      uploadedImageData = result.secure_url;
     }
     const projectData = {
       ...data,
-      projectImage: uploadedImageData ? uploadedImageData.secure_url : "",
+      projectImage: uploadedImageData ? uploadedImageData : "",
     };
     const addProject = await ProjectModel.create(projectData);
     return new NextResponse(JSON.stringify(addProject), { status: 200 });

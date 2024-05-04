@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Protected } from "@/utils/ProtectedRoutes";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export const getSingleProject = cache(async (id) => {
@@ -21,7 +22,7 @@ const Page = async ({ params }) => {
       <section className='w-full py-16'>
         <div className='flex flex-col px-40 w-full max-[480px]:px-[20px] max-[480px]:flex-col max-[890px]:px-20 gap-5'>
           <div className='flex gap-5 max-[480px]:flex-col'>
-            <div className='w-[40%] max-[480px]:w-full max-[480px]:h-[300px] rounded-[12px]'>
+            <div className='w-[40%] max-[480px]:w-full max-[480px]:h-auto rounded-[12px]'>
               <Image
                 src={data.projectImage && data.projectImage}
                 alt={data.title}
@@ -39,19 +40,16 @@ const Page = async ({ params }) => {
               </p>
             </div>
           </div>
-          <ul className={`flex flex-wrap gap-2`}>
-            {data.technologies && data.technologies.map((sk, i) => {
+          <div className="flex flex-wrap gap-3 mt-3">
+            {data.technologies && data.technologies.map((tech, key) => {
               return (
-                <li
-                  key={i}
-                  className='text-[#755BB4] font-[600] text-[14px] uppercase'
-                >
-                  {sk},
-                </li>
-              );
+                <p key={key} className="dark:text-white text-black bg-[#755BB4] py-1 px-[10px] rounded-2xl capitalize">
+                  {tech}
+                </p>
+              )
             })}
-          </ul>
-          <div className='mt-4 flex gap-5 max-[480px]:flex-col'>
+          </div>
+          <div className='mt-4 w-full flex gap-5 flex-col'>
             {data.keyPoints && data.keyPoints.map((item, index) => {
               return (
                 <div className='mt-2' key={item._id || index}>
@@ -63,7 +61,7 @@ const Page = async ({ params }) => {
                       return (
                         <li
                           key={point._id}
-                          className='font-[600] text-[14px] text-start'
+                          className='font-[600] text-[14px] text-start mb-1'
                         >
                           {point}
                         </li>
@@ -75,12 +73,12 @@ const Page = async ({ params }) => {
             })}
           </div>
           <div className='flex items-center gap-10 mt-10 max-[480px]:static max-[480px]:flex-col max-[890px]:flex-col max-[890px]:gap-2 max-[480px]:mt-2'>
-            <button className='bg-[#755BB4] text-[14px] font-[600] border-[#fff] p-3 max-w-[250px] px-6 rounded-[20px] text-white max-[890px]:w-full max-[890px]:max-w-full'>
+            <Link href={data.githubLink} target='_blank' className='bg-[#755BB4] text-center text-[14px] font-[600] border-[#fff] p-3 max-w-[250px] px-6 rounded-[20px] text-white max-[890px]:w-full max-[890px]:max-w-full'>
               Soruce Code - Github
-            </button>
-            <button className='bg-[#755BB4] text-[14px] font-[600] border-[#fff] p-3 max-w-[250px] px-6 rounded-[20px] text-white max-[890px]:w-full max-[890px]:max-w-full'>
+            </Link>
+            <Link href="" target="" className='bg-[#755BB4] text-center text-[14px] font-[600] border-[#fff] p-3 max-w-[250px] px-6 rounded-[20px] text-white max-[890px]:w-full max-[890px]:max-w-full'>
               Live Link
-            </button>
+            </Link>
           </div>
         </div>
       </section>
