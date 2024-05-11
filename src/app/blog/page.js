@@ -1,5 +1,5 @@
 "use client"
-import React, { cache, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import BlogCard from "@/components/BlogCard";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -9,14 +9,14 @@ import axios from "axios";
 const Page = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    const getData = cache(async () => {
+    const getData = async () => {
       try {
         const res = await axios.get(`/api/blog`);
         setData(res.data);
       } catch (error) {
         console.error(error);
       }
-    })
+    }
     getData()
   }, [])
   return (

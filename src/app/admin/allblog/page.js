@@ -1,19 +1,19 @@
 "use client"
 import AdminBlogCard from "@/components/AdminBlogCard";
 import axios from "axios";
-import React, { cache, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Page = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    const getData = cache(async () => {
+    const getData = async () => {
       try {
         const res = await axios.get(`/api/blog`);
         setData(res.data);
       } catch (error) {
         console.error(error);
       }
-    })
+    }
     getData()
   }, [])
 

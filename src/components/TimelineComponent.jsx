@@ -1,16 +1,14 @@
 "use client";
 import React from "react";
 import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
+import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import TimelineDot from "@mui/lab/TimelineDot";
 import SchoolIcon from "@mui/icons-material/School";
 import { timeLine } from "@/utils";
 import WorkIcon from "@mui/icons-material/Work";
-import { timelineOppositeContentClasses } from "@mui/lab/TimelineOppositeContent";
 
 const TimelineComponent = () => {
   return (
@@ -28,24 +26,16 @@ const TimelineComponent = () => {
         <div className='mt-5 mx-auto w-full'>
           <Timeline
             sx={{
-              [`& .${timelineOppositeContentClasses.root}`]: {
-                flex: 0.4,
+              [`& .${timelineItemClasses.root}:before`]: {
+                flex: 0,
+                padding: 2,
               },
             }}
-            className='max-[480px]:mx-auto'
-            style={{ flexDirection: "column-reverse", padding: "0" }}
+            className='max-[480px]:mx-auto flex-col-reverse'
           >
             {timeLine.map((item, index) => {
               return (
                 <TimelineItem key={index}>
-                  <TimelineOppositeContent
-                    sx={{ m: "auto 0" }}
-                    style={{ padding: "0" }}
-                  >
-                    <p className='text-[14px] dark:text-white text-black font-[600] mr-1'>
-                      {item.year}
-                    </p>
-                  </TimelineOppositeContent>
                   <TimelineSeparator>
                     <TimelineConnector style={{ backgroundColor: "#755BB4" }} />
                     <TimelineDot style={{ backgroundColor: "white" }}>
@@ -58,9 +48,14 @@ const TimelineComponent = () => {
                     <TimelineConnector style={{ backgroundColor: "#755BB4" }} />
                   </TimelineSeparator>
                   <TimelineContent sx={{ py: "12px", px: 2 }}>
-                    <h4 className='text-[18px] text-[#755BB4] font-[600] '>
-                      {item.institutionName}
-                    </h4>
+                    <div className="flex items-center justify-between">
+                      <h4 className='text-[18px] text-[#755BB4] font-[600] '>
+                        {item.institutionName}
+                      </h4>
+                      <p className='text-[14px] dark:text-white text-black font-[600] mr-1'>
+                        {item.year}
+                      </p>
+                    </div>
                     <p className='text-[14px] dark:text-white text-black font-[600] '>
                       {item.description}
                     </p>

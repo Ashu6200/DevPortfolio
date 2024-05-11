@@ -40,7 +40,7 @@ const HeroBanner = () => {
                   alt='logo'
                   width={300}
                   height={400}
-                  className='w-[300px] max-[890px]:w-[200px] '
+                  className='max-w-[300px] max-[890px]:w-[200px] h-auto w-auto'
                   priority
                   quality={100}
                 />

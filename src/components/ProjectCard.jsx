@@ -13,7 +13,7 @@ const ProjectCard = ({ item }) => {
               alt={item.title}
               width={300}
               height={300}
-              className='w-full h-full object-cover'
+              className='w-auto h-auto object-cover min-w-full min-h-full'
             />
           </div>
           <div className='w-[70%] max-[480px]:w-full relative'>

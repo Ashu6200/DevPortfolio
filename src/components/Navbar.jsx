@@ -15,29 +15,16 @@ const Navbar = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
   const [showMenu, setShowMenu] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const logout = (e) => {
     e.preventDefault();
     signOut();
     router.push(`/`)
   };
-  useEffect(() => {
-    const scrolledNav = () => {
-      if (window.scrollY > 80) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-    window.addEventListener("scroll", scrolledNav);
-    return () => window.addEventListener("scroll", scrolledNav);
-  }, []);
 
   return (
-    <div className='w-full sticky top-0 z-10'>
+    <div className='w-full'>
       <div
-        className={`w-full flex items-center justify-between px-40 py-4 glass max-[480px]:px-[20px] max-[890px]:px-20 ${scrolled && "dark:bg-black bg-white"
-          }`}
+        className={`w-full sticky top-0 z-10 flex items-center justify-between px-40 py-4 glass max-[480px]:px-[20px] max-[890px]:px-20`}
       >
         <div className='w-[100px] object-contain'>
           <Image

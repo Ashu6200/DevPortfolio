@@ -25,8 +25,8 @@ export default function RootLayout({ children }) {
       >
         <AuthProvider>
           <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
+            <Toaster position='top-right' />
             <Suspense fallback={<Loading />}>
-              <Toaster position='top-right' />
               {children}
             </Suspense>
           </ThemeProvider>
