@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
 
-## Getting Started
+## Description
+This project is a portfolio website built using the MERN (MongoDB, Express.js, React.js, Node.js) stack with Next.js. It serves as a showcase of the developer's education details, projects, blogs, and provides a contact form. The project also includes an admin panel where the content of the portfolio can be managed.
 
-First, run the development server:
+## Features
+- **Education Detail**: Display education background and qualifications.
+- **Projects**: Showcase projects with descriptions, images, and links.
+- **Blog**: Share blog posts related to development or other topics of interest.
+- **Contact Form**: Allow visitors to get in touch with the developer.
+- **Admin Panel**: Control the content of the portfolio including education details, projects, blog posts, and contact information.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun run dev
-```
+## Technologies Used
+- **MongoDB**: Database to store portfolio data.
+- **Express.js**: Backend framework for handling server-side logic.
+- **React.js**: Frontend library for building the user interface.
+- **Next.js**: React framework for server-side rendering and routing.
+- **Node.js**: JavaScript runtime for server-side scripting.
+- **Other**: Additional libraries and tools may have been used for styling, authentication, and other functionalities.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
+1. Clone the repository: `git clone [https://github.com/your-username/portfolio.git](https://github.com/Ashu6200/My-Profolio.git)`
+2. Navigate to the project directory: `cd My-Profolio`
+3. Install dependencies: `npm install`
+4. Set up MongoDB database and update the connection string in the project.
+5. Start the development server: `npm run dev`
+6. Access the application at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Usage
+- Explore the portfolio by navigating through the different sections: education, projects, blog, and contact.
+- Use the contact form to send messages to the developer.
+- Access the admin panel to manage the content of the portfolio.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contributing
+Contributions are welcome! If you'd like to contribute to the project, please fork the repository, make your changes, and submit a pull request. Make sure to follow the existing code style and conventions.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contact
+For any inquiries or support, please contact [ashutoshkewat1@gmail.com](mailto:ashutoshkewat1@gmail.com).
