@@ -19,8 +19,8 @@ This project is a portfolio website built using the MERN (MongoDB, Express.js, R
 - **Other**: Additional libraries and tools may have been used for styling, authentication, and other functionalities.
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/your-username/portfolio.git`
-2. Navigate to the project directory: `cd portfolio`
+1. Clone the repository: `git clone [https://github.com/your-username/portfolio.git](https://github.com/Ashu6200/My-Profolio.git)`
+2. Navigate to the project directory: `cd My-Profolio`
 3. Install dependencies: `npm install`
 4. Set up MongoDB database and update the connection string in the project.
 5. Start the development server: `npm run dev`
