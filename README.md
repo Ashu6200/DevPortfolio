@@ -12,7 +12,6 @@ This project is a portfolio website built using the MERN (MongoDB, Express.js, R
 
 ## Technologies Used
 - **MongoDB**: Database to store portfolio data.
-- **Express.js**: Backend framework for handling server-side logic.
 - **React.js**: Frontend library for building the user interface.
 - **Next.js**: React framework for server-side rendering and routing.
 - **Node.js**: JavaScript runtime for server-side scripting.
