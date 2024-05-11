@@ -17,7 +17,7 @@ const BlogCard = ({ item }) => {
             />
           </div>
           <div className='w-[70%] max-[480px]:w-full'>
-            <h1 className='text-[35px] font-[600] text-start text-[#755BB4]'>
+            <h1 className='text-[34px] max-[480px]:text-[24px] font-[600] text-start text-[#755BB4]'>
               {item.title}
             </h1>
             <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>

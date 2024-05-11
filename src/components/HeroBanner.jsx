@@ -30,6 +30,13 @@ const HeroBanner = () => {
               </div>
             ))}
           </div>
+          <a href="/images/Ashutosh_Kewat_2024.pdf" download>
+            <button
+              className=' text-[14px] mt-5 max-w-max p-[8px] max-[480px]:p-[5px] bg-[#755BB4] text-center text-[#fff] rounded'
+            >
+              Download Resume
+            </button>
+          </a>
         </div>
         <div className='w-[50%] flex justify-end max-[480px]:hidden'>
           <div className='w-[400px] h-[400px] relative bg-[#755BB4] rounded-[12px] max-[890px]:w-[250px] max-[890px]:h-[250px]'>

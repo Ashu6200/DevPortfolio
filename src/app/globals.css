@@ -48,3 +48,9 @@
 .dark .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
   color: white;
 }
+
+@media screen and (max-width: 480px) {
+  .css-ha3bif-MuiTimelineItem-root:before {
+    padding: 0 !important;
+  }
+}

@@ -17,7 +17,7 @@ const ProjectCard = ({ item }) => {
             />
           </div>
           <div className='w-[70%] max-[480px]:w-full relative'>
-            <h1 className='text-[34px] font-[600] text-start text-[#755BB4]'>
+            <h1 className='text-[34px] max-[480px]:text-[24px] font-[600] text-start text-[#755BB4]'>
               {item.title}
             </h1>
             <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>
@@ -29,7 +29,7 @@ const ProjectCard = ({ item }) => {
             <div className="flex flex-wrap gap-3 mt-3">
               {item.technologies && item.technologies.map((tech, key) => {
                 return (
-                  <p key={key} className="dark:text-white text-black bg-[#755BB4] py-1 px-[10px] rounded-2xl capitalize">
+                  <p key={key} className="dark:text-white font-[500] max-[480px]:font-[500] text-[14px] text-black bg-[#755BB4] py-1 px-[10px] rounded-2xl capitalize">
                     {tech}
                   </p>
                 )

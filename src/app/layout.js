@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
         className={`${poppins.className} bg-white bg-no-repeat dark:bg-black duration-300 m-2`}
       >
         <AuthProvider>
-          <ThemeProvider attribute='class' defaultTheme='dark' enableSystem>
+          <ThemeProvider attribute='class' defaultTheme='light'>
             <Toaster position='top-right' />
             <Suspense fallback={<Loading />}>
               {children}

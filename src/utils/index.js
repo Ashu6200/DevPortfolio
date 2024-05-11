@@ -119,7 +119,7 @@ export const timeLine = [
     location: " Kohka-Kurud, Bhilai, Chhattisgarh, India",
     locationType: "Day Scholar",
     degree: "Bachelor of Engineering - CSE",
-    institutionName: "Rungta College of Engineering & Technology",
+    institutionName: "Rungta Engineering College",
     description:
       "My life in an engineering college with a CSE branch would be dynamic and fast-paced, filled with opportunities for learning, growth, and exploration in the exciting field of computer science and technology.",
   },

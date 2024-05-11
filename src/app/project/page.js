@@ -27,7 +27,7 @@ const Page = () => {
       <section className='w-full h-full'>
         <div className='w-full px-40 max-[480px]:px-[20px] max-[890px]:px-20'>
           <div className=' text-center py-16'>
-            <h1 className='text-[44px] font-[600]'>
+            <h1 className='text-[44px] font-[600] max-[480px]:text-[32px]'>
               My <span className='text-[#755BB4]'>Projects</span>
             </h1>
             <p className='text-[14px] dark:text-white text-black font-[500] text-center'>

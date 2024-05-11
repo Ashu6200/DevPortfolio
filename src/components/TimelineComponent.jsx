@@ -13,13 +13,13 @@ import WorkIcon from "@mui/icons-material/Work";
 const TimelineComponent = () => {
   return (
     <div className='w-full flex justify-center py-32'>
-      <div className='text-center px-40 max-[480px]:px-[20px] max-[890px]:px-[50px]'>
-        <div>
-          <h1 className='text-[44px] font-[600]'>
+      <div className='px-40 max-[480px]:px-[20px] max-[890px]:px-[50px]'>
+        <div className='text-center'>
+          <h1 className='text-[44px] font-[500] max-[480px]:text-[32px]'>
             My <span className='text-[#755BB4]'>Education & Career</span>{" "}
             Timeline
           </h1>
-          <p className='text-[14px] dark:text-white text-black font-[500] text-center'>
+          <p className='text-[14px] dark:text-white text-black font-[500] text-center max-[480px]:text-justify'>
             {`A career timeline is a visual representation or written summary of an individual's professional journey over time. It typically includes key milestones, achievements, positions held, educational accomplishments, and other significant events related to a person's career. Career timelines are used to provide a concise overview of one's career progression and can be helpful for job seekers, professionals, or individuals reflecting on their career path.`}
           </p>
         </div>
@@ -28,10 +28,10 @@ const TimelineComponent = () => {
             sx={{
               [`& .${timelineItemClasses.root}:before`]: {
                 flex: 0,
-                padding: 2,
+                padding: 0,
               },
             }}
-            className='max-[480px]:mx-auto flex-col-reverse'
+            className='max-[480px]:mx-auto !flex-col-reverse !p-0'
           >
             {timeLine.map((item, index) => {
               return (
@@ -47,40 +47,40 @@ const TimelineComponent = () => {
                     </TimelineDot>
                     <TimelineConnector style={{ backgroundColor: "#755BB4" }} />
                   </TimelineSeparator>
-                  <TimelineContent sx={{ py: "12px", px: 2 }}>
-                    <div className="flex items-center justify-between">
+                  <TimelineContent className="py-3 px-1 glass !mb-3">
+                    <div className="mb-2 flex items-center justify-between max-[480px]:flex-col max-[480px]:items-start">
                       <h4 className='text-[18px] text-[#755BB4] font-[600] '>
                         {item.institutionName}
                       </h4>
-                      <p className='text-[14px] dark:text-white text-black font-[600] mr-1'>
+                      <p className='text-[14px] dark:text-white text-black font-[500]'>
                         {item.year}
                       </p>
                     </div>
-                    <p className='text-[14px] dark:text-white text-black font-[600] '>
+                    <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>
                       {item.description}
                     </p>
-                    {item.degree && (
-                      <p className='text-[14px] dark:text-white text-black font-[600] '>
-                        <span className='text-[#755BB4] font-[600] text-[14px]'>
-                          Degree :{" "}
-                        </span>
-                        {item.degree}
-                      </p>
-                    )}
-                    <div className='flex max-[480px]:flex-wrap gap-2'>
-                      <p className='text-[14px] dark:text-white text-black font-[600] '>
+                    <div className='flex max-[480px]:flex-col gap-2 max-[480px]:gap-1 mt-3'>
+                      {item.degree && (
+                        <p className='text-[14px] dark:text-white text-black font-[500] '>
+                          <span className='text-[#755BB4] font-[600] text-[14px]'>
+                            Degree :{" "}
+                          </span>
+                          {item.degree}
+                        </p>
+                      )}
+                      <p className='text-[14px] dark:text-white text-black font-[500] '>
                         <span className='text-[#755BB4] font-[600] text-[14px]'>
                           Position :{" "}
                         </span>
                         {item.position}
                       </p>
-                      <p className='text-[14px] dark:text-white text-black font-[600] '>
+                      <p className='text-[14px] dark:text-white text-black font-[500] '>
                         <span className='text-[#755BB4] font-[600] text-[14px]'>
                           Location :{" "}
                         </span>
                         {item.location}
                       </p>
-                      <p className='text-[14px] dark:text-white text-black font-[600] '>
+                      <p className='text-[14px] dark:text-white text-black font-[500] '>
                         <span className='text-[#755BB4] font-[600] text-[14px]'>
                           Location Type :{" "}
                         </span>
@@ -90,7 +90,7 @@ const TimelineComponent = () => {
                     {/* <div>
                       {item.keypoints && (
                         <div>
-                          <p className='text-[#755BB4] font-[600] text-[14px]'>
+                          <p className='text-[#755BB4] font-[500] text-[14px]'>
                             Key Points :{" "}
                           </p>
                           <ul>
@@ -98,7 +98,7 @@ const TimelineComponent = () => {
                               return (
                                 <li
                                   key={i}
-                                  className='dark:text-white text-black font-[600] text-[12px] mt-[2px]'
+                                  className='dark:text-white text-black font-[500] text-[12px] mt-[2px]'
                                 >
                                   {"-"} {k.title}
                                 </li>
@@ -111,7 +111,7 @@ const TimelineComponent = () => {
                     {/* <div>
                       {item.skills && (
                         <div>
-                          <p className='text-[#755BB4] font-[600] text-[14px]'>
+                          <p className='text-[#755BB4] font-[500] text-[14px]'>
                             Skills :{" "}
                           </p>
                           <ul className='flex flex-wrap gap-1 justify-start'>
@@ -120,7 +120,7 @@ const TimelineComponent = () => {
                                 <>
                                   <li
                                     key={i}
-                                    className='text-black dark:text-white font-[600] text-[12px] uppercase'
+                                    className='text-black dark:text-white font-[500] text-[12px] uppercase'
                                   >
                                     {sk},
                                   </li>

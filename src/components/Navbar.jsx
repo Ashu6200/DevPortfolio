@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import ThemeSwitcher from "@/utils/ThemeSwitcher";
 import Image from "next/image";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { AiOutlineMenu } from "react-icons/ai";
 import { IoMdLogOut } from "react-icons/io";
 import { Navlinks } from "@/utils";
@@ -20,7 +20,7 @@ const Navbar = () => {
     signOut();
     router.push(`/`)
   };
-
+  const name = session && session.user.name.split(' ')[0];
   return (
     <div className='w-full'>
       <div
@@ -67,12 +67,12 @@ const Navbar = () => {
                   className='flex items-center justify-center'
                 >
                   <span className='dark:text-[#755BB4] text-[#755BB4] text-[14px] font-[600]'>
-                    Hi {session.user.name}
+                    Hi {name}
                   </span>
                 </Link>
               ) : (
                 <span className='dark:text-[#755BB4] text-[#755BB4] text-[14px] font-[600]'>
-                  Hi {session.user.name}
+                  Hi {name}
                 </span>
               )}
               <IoMdLogOut
