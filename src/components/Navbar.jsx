@@ -22,9 +22,9 @@ const Navbar = () => {
   };
   const name = session && session.user.name.split(' ')[0];
   return (
-    <div className='w-full'>
+    <div className='w-full sticky top-0'>
       <div
-        className={`w-full sticky top-0 z-10 flex items-center justify-between px-40 py-4 glass max-[480px]:px-[20px] max-[890px]:px-20`}
+        className={`w-full  z-10 flex items-center justify-between px-40 py-4 glass max-[480px]:px-[20px] max-[890px]:px-20`}
       >
         <div className='w-[100px] object-contain'>
           <Image
