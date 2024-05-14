@@ -45,11 +45,11 @@ const HeroBanner = () => {
                 <Image
                   src="/images/myPic.png"
                   alt="logo"
-                  className="max-w-[300px] max-h-[400px] max-[890px]:w-[200px] h-auto w-auto"
-                  priority
-                  quality={100}
+                  className='max-w-[300px] max-h-full max-[890px]:w-[200px] h-auto w-auto'
                   width={300}
                   height={400}
+                  priority
+                  quality={100}
                 />
               </div>
             </div>
