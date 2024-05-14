@@ -124,7 +124,7 @@ export const timeLine = [
       "My life in an engineering college with a CSE branch would be dynamic and fast-paced, filled with opportunities for learning, growth, and exploration in the exciting field of computer science and technology.",
   },
   {
-    id: "4",
+    id: 4,
     year: "March 2022 - July 2022",
     position: "Email Marketing",
     infoType: "job",

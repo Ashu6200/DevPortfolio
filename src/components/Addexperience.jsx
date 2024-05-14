@@ -19,9 +19,6 @@ const AddexperienceFrom = () => {
   const [workType, setWorkType] = useState("");
   const [location, setLocation] = useState("");
   const [locationType, setLocationType] = useState("");
-  const [keyPoints, setKeyPoints] = useState([
-    { title: "Untitled Title", points: [""] },
-  ]);
   const reset = () => {
     setStartDate(new Date());
     setEndDate(new Date());
@@ -31,7 +28,6 @@ const AddexperienceFrom = () => {
     setWorkType("");
     setLocation("");
     setLocationType("");
-    setKeyPoints([{ title: "Untitled Title", points: [""] }]);
   };
 
   const onSubmit = async (e) => {
@@ -45,7 +41,6 @@ const AddexperienceFrom = () => {
       description: description,
       workType: workType,
       locationType: locationType,
-      keyPoints: keyPoints,
     };
     try {
       const res = await axios.post("/api/experience", data);
@@ -181,17 +176,6 @@ const AddexperienceFrom = () => {
             }}
           />
         </div>
-      </div>
-      <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
-          KeyPoints of Experience
-        </label>
-        <Highlight
-          setPoints={setKeyPoints}
-          points={keyPoints}
-          name={"keyPoints"}
-          type={"Experiences"}
-        />
       </div>
       <button
         disabled={loading}
