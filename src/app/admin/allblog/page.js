@@ -26,7 +26,7 @@ const Page = () => {
         {Array.isArray(data) &&
           data.length > 0 &&
           data.map((blog) => {
-            return <AdminBlogCard blog={blog} key={blog._id} data={data} />;
+            return <AdminBlogCard blog={blog} key={blog._id} data={data} setData={setData} />;
           })}
       </div>
     </div>

@@ -27,7 +27,7 @@ const Page = () => {
         {Array.isArray(data) &&
           data.length > 0 &&
           data.map((project) => {
-            return <AdminProjectCard project={project} key={project._id} />;
+            return <AdminProjectCard project={project} key={project._id} data={data} setData={setData} />;
           })}
       </div>
     </div>

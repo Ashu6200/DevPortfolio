@@ -7,13 +7,14 @@ import toast from "react-hot-toast";
 import { AiOutlineDelete } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 
-const AdminBlogCard = ({ blog }) => {
+const AdminBlogCard = ({ blog, data, setData }) => {
   const router = useRouter();
   const deleteHandler = async () => {
     try {
       const res = await axios.delete(`/api/blog/${blog._id}`);
-      if (res.status === 200 && res.statusText === "OK") {
+      if (res.status === 200 || res.statusText === "OK") {
         toast.success("Blog successfully Deleted");
+        setData(data.filter(data => data._id !== project._id))
       } else {
         toast.error("Failed to delete Blog");
       }

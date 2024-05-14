@@ -16,7 +16,6 @@ export const GET = async (request, { params }) => {
   }
 };
 export const DELETE = async (request, { params }) => {
-  console.log(params.id);
   await connectToDB();
   const session = await getServerSession(authOptions);
   try {
@@ -59,7 +58,6 @@ export const PUT = async (request, { params }) => {
         }
       );
       uploadedImageData = await uploadResponse.json();
-      console.log(uploadedImageData);
     }
     const blogData = {
       ...data,

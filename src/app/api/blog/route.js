@@ -30,9 +30,7 @@ export const GET = async (req, res) => {
 
 export const POST = async (request, response) => {
   await connectToDB();
-  console.log("create new blog");
   const session = await getServerSession(authOptions);
-  console.log(session, "sessions");
   try {
     if (!session.user.isAdmin) {
       return new NextResponse({
@@ -41,23 +39,18 @@ export const POST = async (request, response) => {
       });
     }
     const data = await request.json();
-    console.log(data, "data");
     let uploadedImageData = "";
     if (data.imageBlog) {
-      console.log("Inside");
       const fileBuffer = Buffer.from(data.imageBlog, "base64");
       const myCloud = await cloudinary.uploader.upload(fileBuffer, {
         folder: "ashutoshportfolio",
       });
-      console.log(myCloud);
       uploadedImageData = myCloud.secure_url;
-      console.log("Outside");
     }
     const blogData = {
       ...data,
       imageBlog: uploadedImageData ? uploadedImageData : "",
     };
-    console.log(blogData, "blogData");
     const addBlog = await BlogModel.create(blogData);
     return new NextResponse(JSON.stringify(addBlog), { status: 200 });
   } catch (error) {

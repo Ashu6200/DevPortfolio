@@ -7,7 +7,7 @@ import TimelineComponent from "@/components/TimelineComponent";
 
 export default function Home() {
   return (
-    <>
+    <main className="relative">
       <Navbar />
       <section className='w-full h-full'>
         <HeroBanner />
@@ -16,6 +16,6 @@ export default function Home() {
         <BlogSection />
       </section>
       <Footer />
-    </>
+    </main>
   );
 }

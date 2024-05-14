@@ -42,10 +42,9 @@ const Highlight = ({ points, setPoints, name, type }) => {
           return (
             <React.Fragment key={index}>
               <div
-                className={`flex w-full items-center justify-between gap-2 ${
-                  isCollapsed[index] &&
+                className={`flex w-full items-center justify-between gap-2 ${isCollapsed[index] &&
                   "bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full"
-                }`}
+                  }`}
               >
                 {isCollapsed[index] ? (
                   <>
@@ -68,7 +67,7 @@ const Highlight = ({ points, setPoints, name, type }) => {
                           type='text'
                           name='title'
                           value={item.title}
-                          placeholder={`Enter the ${type} points`}
+                          placeholder={`Enter the ${type} points title`}
                           className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full'
                           onChange={(e) => {
                             const updateData = [...points];
@@ -82,9 +81,8 @@ const Highlight = ({ points, setPoints, name, type }) => {
                 )}
                 <div className='flex items-center'>
                   <AiOutlineDelete
-                    className={`dark:text-white  text-[20px] mr-2 text-black ${
-                      index > 0 ? "cursor-pointer" : "cursor-no-drop"
-                    }`}
+                    className={`dark:text-white  text-[20px] mr-2 text-black ${index > 0 ? "cursor-pointer" : "cursor-no-drop"
+                      }`}
                     onClick={() => {
                       if (index > 0) {
                         const updateData = [...points];
@@ -133,11 +131,10 @@ const Highlight = ({ points, setPoints, name, type }) => {
                             }}
                           />
                           <AiOutlineDelete
-                            className={`dark:text-white  text-[20px] text-black ${
-                              linkIndex === 0
+                            className={`dark:text-white  text-[20px] text-black ${linkIndex === 0
                                 ? "cursor-no-drop"
                                 : "cursor-pointer"
-                            }`}
+                              }`}
                             onClick={() => {
                               linkIndex === 0
                                 ? null

@@ -16,7 +16,6 @@ const BlogSection = () => {
     }
     getData();
   }, []);
-  console.log("blog section", data);
   return (
     <div className='w-full px-40 max-[890px]:px-[50px] max-[480px]:px-[20px] '>
       <div className=' text-center py-16 max-[480px]:py-0'>
@@ -27,7 +26,7 @@ const BlogSection = () => {
           {`A blog, short for "weblog," is a regularly updated website or online platform where individuals, organizations, or groups publish and share written, multimedia, or interactive content on various topics. Blogs typically feature entries or posts presented in reverse chronological order, with the most recent content appearing at the top.`}
         </p>
         <div className='w-full mt-10'>
-          {data.splice(0, 2).map(item => {
+          {data && data.slice(0, 2).map(item => {
             return <BlogCard key={item._id} item={item} />;
           })}
         </div>

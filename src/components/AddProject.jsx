@@ -11,7 +11,7 @@ const AddProject = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [keyPoints, setKeyPoints] = useState([
-    { title: "Untitled Title", points: [""] },
+    { title: "", points: [""] },
   ]);
   const [projectImage, setProjectImage] = useState("");
   const [githubLink, setGithubLink] = useState("");
@@ -66,10 +66,11 @@ const AddProject = () => {
       fileReader.readAsDataURL(file);
     }
   };
-  const reseTFields = () => {
+  const reseTFields = (e) => {
+    e.preventDefault()
     setTitle("");
     setDescription("");
-    setKeyPoints([{ title: "Untitled Title", points: [""] }]);
+    setKeyPoints([{ title: "", points: [""] }]);
     setProjectImage("");
     setGithubLink("");
     setLiveLink("");
@@ -89,14 +90,14 @@ const AddProject = () => {
       technologies: technologies.map((item) => item.value),
       rating: rating,
     };
-    console.log(data);
     try {
       const res = await axios.post("/api/work", data);
-      if (res.status === 200 && res.statusText === "OK") {
+      console.log(res)
+      if (res.status === 200 || res.statusText === "OK") {
         toast.success("Project successfully posted");
         reseTFields();
       } else {
-        toast.error("Failed to post Pproject");
+        toast.error("Failed to post Project");
       }
     } catch (error) {
       console.error("Error posting project", error);
@@ -231,13 +232,22 @@ const AddProject = () => {
           className='basic-multi-select bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-0 outline-none mb-4  dark:!text-[#fff] !text-black '
         />
       </div>
-      <button
-        disabled={loading}
-        className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
-        onClick={submit}
-      >
-        Create Project
-      </button>
+      <div className="flex gap-2">
+        <button
+          disabled={loading}
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
+          onClick={submit}
+        >
+          Create Project
+        </button>
+        <button
+          disabled={loading}
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[red] text-center text-[#fff] rounded mt-8'
+          onClick={reseTFields}
+        >
+          Reset
+        </button>
+      </div>
     </form>
   );
 };

@@ -88,7 +88,6 @@ const EditBlog = ({ blogId }) => {
     try {
       const res = await axios.put(`/api/blog/${blogId}`, data);
       if (res.status === 200 && res.statusText === "OK") {
-        console.log(res.blog);
         toast.success("Blog successfully Edit");
         setTimeout(() => {
           router.push("/admin/allblog");

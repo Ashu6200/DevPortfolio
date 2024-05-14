@@ -43,13 +43,13 @@ const HeroBanner = () => {
             <div className='w-[400px] h-[400px] top-[40px] left-[-30px] rounded-lg border-[6px] border-[#000000] dark:border-white absolute max-[890px]:w-[250px] max-[890px]:h-[250px]'>
               <div className='absolute top-[-144px] left-[-5px] max-[890px]:top-[-115px]'>
                 <Image
-                  src={"/images/myPic.png"}
-                  alt='logo'
-                  width={300}
-                  height={400}
-                  className='max-w-[300px] max-h-[400px] max-[890px]:w-[200px] h-auto w-auto'
+                  src="/images/myPic.png"
+                  alt="logo"
+                  className="max-w-[300px] max-h-[400px] max-[890px]:w-[200px] h-auto w-auto"
                   priority
                   quality={100}
+                  width={300}
+                  height={400}
                 />
               </div>
             </div>

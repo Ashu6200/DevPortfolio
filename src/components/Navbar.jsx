@@ -32,12 +32,7 @@ const Navbar = () => {
             alt='logo'
             width={100}
             height={100}
-            style={{
-              width: "100%",
-              height: "auto",
-            }}
-            priority
-            quality={100}
+            className="max-w-[100px] max-h-[100px] w-auto h-auto"
             onClick={() => router.push(`/`)}
           />
         </div>

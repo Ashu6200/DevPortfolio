@@ -13,7 +13,7 @@ const BlogCard = ({ item }) => {
               alt={item.title}
               width={300}
               height={300}
-              className='w-auto h-auto object-cover min-w-full min-h-full'
+              className='w-auto h-auto object-cover max-w-[300] max-h-[300]'
             />
           </div>
           <div className='w-[70%] max-[480px]:w-full'>

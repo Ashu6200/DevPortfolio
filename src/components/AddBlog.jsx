@@ -10,7 +10,7 @@ const AddBlog = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [highlight, setHighlight] = useState([
-    { title: "Untitled Title", points: [""] },
+    { title: "", points: [""] },
   ]);
   const [imageBlog, setImageBlog] = useState(null);
   const [dragging, setDragging] = useState(false);
@@ -50,10 +50,11 @@ const AddBlog = () => {
       fileReader.readAsDataURL(file);
     }
   };
-  const reseTFields = () => {
+  const reseTFields = (e) => {
+    e.preventDefault()
     setTitle("");
     setDescription("");
-    setHighlight([{ title: "Untitled Title", points: [""] }]);
+    setHighlight([{ title: "", points: [""] }]);
     setImageBlog("");
   };
   const submit = async e => {
@@ -65,13 +66,10 @@ const AddBlog = () => {
       higlights: highlight,
       imageBlog: imageBlog,
     };
-    console.log(data, "blog client");
     try {
       const res = await axios.post("/api/blog", data);
-      if (res.status === 200 && res.statusText === "OK") {
-        console.log(res.data);
+      if (res.status === 200 || res.statusText === "OK") {
         toast.success("Blog successfully posted");
-        // reseTFields();
       } else {
         toast.error("Failed to post blog");
       }
@@ -161,13 +159,22 @@ const AddBlog = () => {
           type={"Blog"}
         />
       </div>
-      <button
-        disabled={loading}
-        className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
-        onClick={submit}
-      >
-        Create Blog
-      </button>
+      <div className="flex gap-2">
+        <button
+          disabled={loading}
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
+          onClick={submit}
+        >
+          Create Blog
+        </button>
+        <button
+          disabled={loading}
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[red] text-center text-[#fff] rounded mt-8'
+          onClick={reseTFields}
+        >
+          Reset
+        </button>
+      </div>
     </form>
   );
 };
