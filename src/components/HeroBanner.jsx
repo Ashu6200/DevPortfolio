@@ -1,4 +1,4 @@
-import { socialIcons } from "@/utils";
+import { rgbDataURL, socialIcons } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -32,7 +32,8 @@ const HeroBanner = () => {
           </div>
           <a href="/images/Ashutosh_Kewat_2024.pdf" download>
             <button
-              className=' text-[14px] mt-5 max-w-max p-[8px] max-[480px]:p-[5px] bg-[#755BB4] text-center text-[#fff] rounded'
+              type="button"
+              className='text-[14px] mt-5 max-w-max p-[8px] max-[480px]:p-[5px] bg-[#755BB4] text-center text-[#fff] rounded'
             >
               Download Resume
             </button>
@@ -48,8 +49,8 @@ const HeroBanner = () => {
                   className='max-w-[300px] max-h-full max-[890px]:w-[200px] h-auto w-auto'
                   width={300}
                   height={400}
-                  priority
-                  quality={100}
+                  priority={false}
+                  quality={75}
                 />
               </div>
             </div>
