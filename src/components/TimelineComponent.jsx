@@ -37,7 +37,6 @@ const TimelineComponent = () => {
               return (
                 <TimelineItem key={index}>
                   <TimelineSeparator>
-                    <TimelineConnector style={{ backgroundColor: "#755BB4" }} />
                     <TimelineDot style={{ backgroundColor: "white" }}>
                       {item.infoType === "Education" ? (
                         <SchoolIcon style={{ color: "#755BB4" }} />
@@ -87,51 +86,6 @@ const TimelineComponent = () => {
                         {item.locationType}
                       </p>
                     </div>
-                    {/* <div>
-                      {item.keypoints && (
-                        <div>
-                          <p className='text-[#755BB4] font-[500] text-[14px]'>
-                            Key Points :{" "}
-                          </p>
-                          <ul>
-                            {item?.keypoints.map((k, i) => {
-                              return (
-                                <li
-                                  key={i}
-                                  className='dark:text-white text-black font-[500] text-[12px] mt-[2px]'
-                                >
-                                  {"-"} {k.title}
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      )}
-                    </div> */}
-                    {/* <div>
-                      {item.skills && (
-                        <div>
-                          <p className='text-[#755BB4] font-[500] text-[14px]'>
-                            Skills :{" "}
-                          </p>
-                          <ul className='flex flex-wrap gap-1 justify-start'>
-                            {item.skills.map((sk, i) => {
-                              return (
-                                <>
-                                  <li
-                                    key={i}
-                                    className='text-black dark:text-white font-[500] text-[12px] uppercase'
-                                  >
-                                    {sk},
-                                  </li>
-                                  {"  "}
-                                </>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      )}
-                    </div> */}
                   </TimelineContent>
                 </TimelineItem>
               );
