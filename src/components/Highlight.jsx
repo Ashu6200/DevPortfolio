@@ -60,7 +60,7 @@ const Highlight = ({ points, setPoints, name, type }) => {
                   <>
                     {showSectionInput && (
                       <div className='my-2 flex flex-col w-full'>
-                        <label className='pb-2 dark:text-[#fff] text-black '>
+                        <label className='pb-2 dark:text-[#fff] text-black text-[16px] '>
                           {index + 1}. Enter the {`${(type, name)}`} Title
                         </label>
                         <input
@@ -68,7 +68,7 @@ const Highlight = ({ points, setPoints, name, type }) => {
                           name='title'
                           value={item.title}
                           placeholder={`Enter the ${type} points title`}
-                          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full'
+                          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full text-[16px] '
                           onChange={(e) => {
                             const updateData = [...points];
                             updateData[index].title = e.target.value;
@@ -110,7 +110,7 @@ const Highlight = ({ points, setPoints, name, type }) => {
                       <div className='mb-3 block' key={linkIndex}>
                         <label
                           htmlFor=''
-                          className='block pb-1 dark:text-[#fff] text-black '
+                          className='block pb-1 dark:text-[#fff] text-black text-[16px]  '
                         >
                           {index + 1}.{linkIndex + 1}.{" "}
                           {`Enter the ${(type, name)} points`}
@@ -121,7 +121,7 @@ const Highlight = ({ points, setPoints, name, type }) => {
                             name=''
                             id=''
                             placeholder={`Enter the ${type} key points`}
-                            className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full'
+                            className='text-[16px]  bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black w-full'
                             value={link}
                             onChange={(e) => {
                               const updatedata = [...points];
@@ -132,8 +132,8 @@ const Highlight = ({ points, setPoints, name, type }) => {
                           />
                           <AiOutlineDelete
                             className={`dark:text-white  text-[20px] text-black ${linkIndex === 0
-                                ? "cursor-no-drop"
-                                : "cursor-pointer"
+                              ? "cursor-no-drop"
+                              : "cursor-pointer"
                               }`}
                             onClick={() => {
                               linkIndex === 0

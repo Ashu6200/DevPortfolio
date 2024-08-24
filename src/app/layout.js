@@ -5,6 +5,7 @@ import AuthProvider from "@/utils/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import Loading from "@/components/Loading";
+import { GlobalContext } from "@/context/Index";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -24,14 +25,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.className} bg-white bg-no-repeat dark:bg-black duration-300 m-2`}
       >
-        <AuthProvider>
-          <ThemeProvider attribute='class' defaultTheme='light'>
-            <Toaster position='top-right' />
-            <Suspense fallback={<Loading />}>
-              {children}
-            </Suspense>
-          </ThemeProvider>
-        </AuthProvider>
+        <GlobalContext>
+          <AuthProvider>
+            <ThemeProvider attribute='class' defaultTheme='light'>
+              <Toaster position='top-right' />
+              <Suspense fallback={<Loading />}>
+                {children}
+              </Suspense>
+            </ThemeProvider>
+          </AuthProvider>
+        </GlobalContext>
       </body>
     </html>
   );

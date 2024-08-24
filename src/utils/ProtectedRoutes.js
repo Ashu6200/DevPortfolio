@@ -8,10 +8,11 @@ export const AdminProtected = ({ children }) => {
   if (d) {
     data = d.data;
   }
-  if (data) {
-    const isAdmin = data.user.isAdmin;
-    return isAdmin ? children : redirect("/");
+  if (!data) {
+    return redirect("/authentication");
   }
+  const isAdmin = data.user.isAdmin;
+  return isAdmin ? children : redirect("/");
 };
 export const Protected = ({ children }) => {
   const d = useSession();

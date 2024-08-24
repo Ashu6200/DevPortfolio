@@ -23,36 +23,35 @@ const AdminBlogCard = ({ blog, data, setData }) => {
     }
   };
   return (
-    <div className='w-full glass p-5'>
-      <div className='flex gap-10 max-[480px]:flex-col'>
-        <div className='w-[30%] h-[300px] rounded-[12px] max-[480px]:w-full'>
-          <Image
-            src={blog.imageBlog}
-            alt={blog.title}
-            width={300}
-            height={300}
-            className='w-auto h-auto object-cover min-w-full min-h-full '
+    <div className='w-full glass p-5 rounded-3xl'>
+      <div className='h-[300px] rounded-[12px] max-[480px]:w-full'>
+        <Image
+          src={blog.imageBlog && blog.imageBlog}
+          alt={blog.title}
+          width={300}
+          height={300}
+          className='w-auto h-auto object-cover min-w-full min-h-full rounded-t-2xl'
+        />
+      </div>
+      <div className='w-full py-2 px-4 mt-2'>
+        <div className='flex items-center justify-end gap-3'>
+          <MdModeEdit
+            onClick={() => router.push(`/admin/editblog/${blog._id}`)}
+            className={`dark:text-white text-[20px] mr-2 text-black cursor-pointer`}
+          />
+          <AiOutlineDelete
+            onClick={deleteHandler}
+            className={`dark:text-white text-[20px] mr-2 text-black cursor-pointer`}
           />
         </div>
-        <div className='w-[70%] max-[480px]:w-full'>
-          <div className='flex items-center justify-end gap-3'>
-            <MdModeEdit
-              onClick={() => router.push(`/admin/editblog/${blog._id}`)}
-              className={`dark:text-white text-[20px] mr-2 text-black cursor-pointer`}
-            />
-            <AiOutlineDelete
-              onClick={deleteHandler}
-              className={`dark:text-white text-[20px] mr-2 text-black cursor-pointer`}
-            />
-          </div>
-          <h1 className='text-[35px] font-[600] text-start text-[#755BB4]'>
-            {blog.title}
-          </h1>
-          <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>
-            {blog.description}
-          </p>
-        </div>
+        <h1 className='text-[18px] font-[600] text-start text-[#755BB4]'>
+          {blog.title}
+        </h1>
+        <p className='text-[14px] dark:text-white text-black font-[500] text-justify'>
+          {blog.description.substring(0, 200)}
+        </p>
       </div>
+
     </div>
   );
 };

@@ -109,19 +109,19 @@ const AddProject = () => {
   return (
     <form>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
+        <label className='pb-2 dark:text-[#fff] text-black text-[16px]'>
           Project Title
         </label>
         <input
           type='text'
           name='title'
           placeholder='Enter the Project Title'
-          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black'
+          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black text-[16px] placeholder:text-[16px]'
           onChange={e => setTitle(e.target.value)}
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>
           Project Description
         </label>
         <textarea
@@ -129,12 +129,12 @@ const AddProject = () => {
           type='text'
           name='title'
           placeholder='Enter the Project Description'
-          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black'
+          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black text-[16px] placeholder:text-[16px]'
           onChange={e => setDescription(e.target.value)}
         />
       </div>
       <div className='w-full'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>
           Project Image
         </label>
         <input
@@ -162,7 +162,7 @@ const AddProject = () => {
                 className='max-h-full w-full object-contain'
               />
               <button
-                className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
+                className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8 text-[16px]'
                 onClick={() => setProjectImage(null)}
               >
                 Remove Image
@@ -176,7 +176,7 @@ const AddProject = () => {
         </label>
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>
           KeyPoints of Project
         </label>
         <Highlight
@@ -187,37 +187,37 @@ const AddProject = () => {
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>Github Link</label>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>Github Link</label>
         <input
           type='url'
           name='title'
           placeholder='Enter the Project Title'
-          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black'
+          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black text-[16px] placeholder:text-[16px]'
           onChange={e => setGithubLink(e.target.value)}
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>Live Link</label>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>Live Link</label>
         <input
           type='url'
           name='title'
           placeholder='Enter the Project Title'
-          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black'
+          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black text-[16px] placeholder:text-[16px]'
           onChange={e => setLiveLink(e.target.value)}
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>Rating</label>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>Rating</label>
         <input
           type='number'
           name='rating'
           placeholder='Enter the rating of Project '
-          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black'
+          className='bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-2 outline-none mb-4  dark:text-[#fff] text-black text-[16px]  placeholder:text-[16px]'
           onChange={e => setRating(e.target.value)}
         />
       </div>
       <div className='my-2 flex flex-col'>
-        <label className='pb-2 dark:text-[#fff] text-black '>
+        <label className='pb-2 dark:text-[#fff] text-black  text-[16px]'>
           Technologies
         </label>
         <CreatableSelect
@@ -229,20 +229,20 @@ const AddProject = () => {
           getOptionLabel={(option) => option.value}
           getOptionValue={(option) => option.value}
           onChange={handleTechnologiesChange}
-          className='basic-multi-select bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-0 outline-none mb-4  dark:!text-[#fff] !text-black '
+          className='basic-multi-select bg-transparent border dark:border-[#755BB4] dark:placeholder:text-[#ffffffdd] rounded-[5px] p-0 outline-none mb-4  dark:!text-[#fff] !text-black  text-[16px]'
         />
       </div>
       <div className="flex gap-2">
         <button
           disabled={loading}
-          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8 text-[16px]'
           onClick={submit}
         >
           Create Project
         </button>
         <button
           disabled={loading}
-          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[red] text-center text-[#fff] rounded mt-8'
+          className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[red] text-center text-[#fff] rounded mt-8 text-[16px]'
           onClick={reseTFields}
         >
           Reset

@@ -1,19 +1,5 @@
 import mongoose from "mongoose";
 
-const KeyPointSchema = new mongoose.Schema(
-  {
-    title: {
-      type: String,
-    },
-    points: [
-      {
-        type: String,
-      },
-    ],
-  },
-  { timestamps: true }
-);
-
 const ExperienceSchema = new mongoose.Schema(
   {
     index: {
@@ -43,7 +29,6 @@ const ExperienceSchema = new mongoose.Schema(
       type: String,
       enum: ["Remote", "On-site", "Hybrid", "Day Scholar"],
     },
-    keyPoints: [KeyPointSchema],
   },
   {
     timestamps: true,

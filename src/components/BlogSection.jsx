@@ -1,21 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogCard from "./BlogCard";
-import axios from "axios";
+import { useGlobalContext } from "@/context/Index";
 
 const BlogSection = () => {
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const res = await axios.get("/api/blog");
-        setData(res.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-    getData();
-  }, []);
+  const { blogAllData } = useGlobalContext()
   return (
     <div className='w-full px-40 max-[890px]:px-[50px] max-[480px]:px-[20px] '>
       <div className=' text-center py-16 max-[480px]:py-0'>
@@ -25,8 +14,8 @@ const BlogSection = () => {
         <p className='text-[14px] dark:text-white text-black font-[500] text-center  max-[480px]:text-justify'>
           {`A blog, short for "weblog," is a regularly updated website or online platform where individuals, organizations, or groups publish and share written, multimedia, or interactive content on various topics. Blogs typically feature entries or posts presented in reverse chronological order, with the most recent content appearing at the top.`}
         </p>
-        <div className='w-full mt-10'>
-          {data && data.slice(0, 2).map(item => {
+        <div className='w-full mt-10 grid grid-cols-3 gap-4 max-[480px]:grid-cols-1'>
+          {blogAllData && blogAllData.slice(0, 3).map(item => {
             return <BlogCard key={item._id} item={item} />;
           })}
         </div>
