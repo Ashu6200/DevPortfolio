@@ -1,16 +1,12 @@
-import React, { cache } from "react";
-import axios from "axios";
+'use client'
+import React from "react";
 import Image from "next/image";
+import { useGetSingleBlog } from "@/hooks";
 
-export const getSingleBlog = cache(async (id) => {
-  const { data } = await axios.get(
-    `${process.env.NEXTAUTH_URL}/api/blog/${id}`, {
-    next: { cache: "force-cache" }
-  })
-  return data;
-})
-const Page = async ({ params }) => {
-  const data = await getSingleBlog(params.id);
+const Page = ({ params }) => {
+  const { data, error, loading } = useGetSingleBlog(params.id);
+  if (loading) return <div className='w-full py-16 px-40'>Loading...</div>;
+  if (error) return <div className='w-full py-16 px-40'>Error: {error}</div>;
   return (
     <section className='w-full py-16'>
       <div className='flex flex-col px-40 w-full max-[480px]:px-[20px] max-[480px]:flex-col max-[890px]:px-20 gap-5'>

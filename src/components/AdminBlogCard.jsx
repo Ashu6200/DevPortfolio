@@ -23,7 +23,7 @@ const AdminBlogCard = ({ blog, data, setData }) => {
     }
   };
   return (
-    <div className='w-full glass p-5 rounded-3xl'>
+    <div className='w-full glass rounded-3xl'>
       <div className='h-[300px] rounded-[12px] max-[480px]:w-full'>
         <Image
           src={blog.imageBlog && blog.imageBlog}

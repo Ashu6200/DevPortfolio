@@ -25,16 +25,16 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.className} bg-white bg-no-repeat dark:bg-black duration-300 m-2`}
       >
-        <GlobalContext>
-          <AuthProvider>
+        <AuthProvider>
+          <GlobalContext>
             <ThemeProvider attribute='class' defaultTheme='light'>
               <Toaster position='top-right' />
               <Suspense fallback={<Loading />}>
                 {children}
               </Suspense>
             </ThemeProvider>
-          </AuthProvider>
-        </GlobalContext>
+          </GlobalContext>
+        </AuthProvider>
       </body>
     </html>
   );

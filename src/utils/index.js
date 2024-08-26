@@ -133,18 +133,6 @@ export const timeLine = [
     institutionName: "ASP OL Media ",
     description:
       "As an email marketing specialist, my role involved developing and implementing strategies to optimize engagement and drive results for clients. One of my key achievements was increasing open rates by 30% through meticulous research and implementation of best practices. This involved improving spam scores, testing various subject lines to identify the most effective ones, and continuously refining our approach based on data-driven insights.",
-    keypoints: [
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-    ],
-    skills: ["html", "css"],
   },
   {
     id: 5,
@@ -156,39 +144,6 @@ export const timeLine = [
     institutionName: "Genex Corporate Services Pvt. Ltd",
     description:
       "As a frontend developer, I've spearheaded the creation of three interactive and responsive websites for the company, leveraging the latest technologies such as HTML5, CSS3, and JavaScript. These websites not only boasted visually appealing designs but also provided seamless user experiences across various devices and screen sizes. Integration with Django RESTAPI ensured robust backend support, enabling dynamic content delivery and efficient data management.",
-    keypoints: [
-      {
-        title:
-          "Developed and maintained responsive and user-friendly web interfaces.",
-      },
-      {
-        title:
-          "Integrated websites with Django RESTAPI for seamless data exchange.",
-      },
-      {
-        title:
-          "Collaborated with a team of four to build a Full Stack Tenant Management System.",
-      },
-      {
-        title:
-          "Analyzed company needs and implemented functionality accordingly.",
-      },
-      {
-        title:
-          "Prioritized tasks and implemented goals effectively to meet deadlines.",
-      },
-    ],
-    skills: [
-      "Html",
-      "CSS",
-      "JavaScript",
-      "Reactjs",
-      "Mongoose",
-      "ExpressJs",
-      "Nodejs",
-      "styled-components",
-      "Tailwind CSS",
-    ],
   },
   {
     id: 6,
@@ -200,28 +155,6 @@ export const timeLine = [
     institutionName: "Resonate Learning",
     description:
       "In my role as a full stack developer, I've been involved in a range of projects aimed at delivering comprehensive web solutions. One significant endeavor was the revamping of the Dashboard using MERN Stack technologies. Leveraging MongoDB for the database, Express.js for the backend, React.js for the frontend, and Node.js for server-side scripting, we completely overhauled the dashboard experience. Integrating libraries like Recharts.js and Chart.js enhanced data visualization capabilities, while Axios facilitated smooth communication between the frontend and backend. Styled-components and Material UI were instrumental in crafting visually appealing and interactive user interfaces, ensuring an engaging user experience.",
-    keypoints: [
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-    ],
-    skills: [
-      "Html",
-      "CSS",
-      "JavaScript",
-      "Reactjs",
-      "Mongoose",
-      "ExpresJs",
-      "Nodejs",
-      "styled-components",
-      "Tailwind CSS",
-    ],
   },
   {
     id: 7,
@@ -233,28 +166,6 @@ export const timeLine = [
     institutionName: "Reverr",
     description:
       "As a React developer, I specialize in leveraging React frameworks to craft engaging and responsive web designs that prioritize user experience.My responsibilities include actively participating in code reviews, feature planning, and design reviews to ensure the quality and integrity of the codebase.Additionally, I am proficient in developing and maintaining automated tests to uphold the highest standards of code quality and reliability.",
-    keypoints: [
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-      {
-        title: "Lorem ipsum dolor sit amet, consect",
-      },
-    ],
-    skills: [
-      "Html",
-      "CSS",
-      "JavaScript",
-      "Reactjs",
-      "Mongoose",
-      "ExpresJs",
-      "Nodejs",
-      "styled-components",
-      "Tailwind CSS",
-    ],
   },
 ];
 

@@ -1,5 +1,6 @@
 "use client"
 import AdminBlogCard from "@/components/AdminBlogCard";
+import { useGlobalContext } from "@/context/Index";
 import React from "react";
 
 const Page = () => {
@@ -12,7 +13,6 @@ const Page = () => {
       </h1>
       <div className='grid grid-cols-3 mt-4 max-[480px]:grid-cols-1'>
         {Array.isArray(blogAllData) &&
-          blogAllData.length > 0 &&
           blogAllData.map((blog) => {
             return <AdminBlogCard blog={blog} key={blog._id} data={blogAllData} setData={setBlogAllData} />;
           })}
