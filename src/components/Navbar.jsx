@@ -1,6 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import ThemeSwitcher from "@/utils/ThemeSwitcher";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,6 +8,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { Navlinks } from "@/utils";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
+import { ThemeSwitcher } from "@/utils/ThemeProvider";
 
 const Navbar = () => {
   const router = useRouter();

@@ -1,12 +1,21 @@
 "use client";
-import { useTheme } from "next-themes";
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { BiMoon, BiSun } from "react-icons/bi";
 
-const ThemeSwitcher = () => {
-  const [mounted, setMounted] = useState(false);
+export function ThemeProvider({ children, ...props }) {
+  return (
+    <NextThemesProvider {...props}>
+      {children}
+    </NextThemesProvider>
+  );
+}
+
+
+export const ThemeSwitcher = () => {
+  const [mounted, setMounted] = React.useState(false);
   const { theme, setTheme } = useTheme();
-  useEffect(() => {
+  React.useEffect(() => {
     setMounted(true);
   }, []);
 
@@ -32,5 +41,3 @@ const ThemeSwitcher = () => {
     </div>
   );
 };
-
-export default ThemeSwitcher;

@@ -3,13 +3,8 @@ import ProjectModel from "@/models/projectModel";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/authOptions";
 import { getServerSession } from "next-auth";
-import { v2 as cloudinary } from "cloudinary";
+import { cloudinary } from "@/utils/Cloudinary";
 
-cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
 
 export const GET = async (req, res) => {
   await connectToDB();
@@ -27,32 +22,73 @@ export const GET = async (req, res) => {
   }
 };
 
-export const POST = async (request, response) => {
+// export const POST = async (request, response) => {
+//   await connectToDB();
+//   const session = await getServerSession(authOptions);
+//   try {
+//     if (!session.user.isAdmin) {
+//       return new NextResponse({
+//         status: 403,
+//         error: "You're not authorized to perform this action",
+//       });
+//     }
+//     const data = await request.json();
+//     let uploadedImageData;
+//     if (data.projectImage) {
+//       const fileBuffer = Buffer.from(data.projectImage, "base64");
+//       const result = await cloudinary.uploader.upload(fileBuffer, {
+//         invalidate: true,
+//       });
+//       uploadedImageData = result.secure_url;
+//     }
+//     const projectData = {
+//       ...data,
+//       projectImage: uploadedImageData ? uploadedImageData : "",
+//     };
+//     const addProject = await ProjectModel.create(projectData);
+//     return new NextResponse(JSON.stringify(addProject), { status: 200 });
+//   } catch (error) {
+//     return new NextResponse({ status: 500, error: error.message });
+//   }
+// };
+export const POST = async (request) => {
   await connectToDB();
   const session = await getServerSession(authOptions);
+
   try {
-    if (!session.user.isAdmin) {
-      return new NextResponse({
-        status: 403,
-        error: "You're not authorized to perform this action",
-      });
+    if (!session?.user?.isAdmin) {
+      return NextResponse.json(
+        { error: "You're not authorized to perform this action" },
+        { status: 403 }
+      );
     }
+
     const data = await request.json();
-    let uploadedImageData;
+    let uploadedImageData = "";
+
     if (data.projectImage) {
       const fileBuffer = Buffer.from(data.projectImage, "base64");
-      const result = await cloudinary.uploader.upload(fileBuffer, {
+      const fileUri = "data:image/png;base64," + fileBuffer.toString("base64");
+
+      const result = await cloudinary.uploader.upload(fileUri, {
         invalidate: true,
+        resource_type: "auto",
+        folder: "ashutoshportfolio",
+        use_filename: true,
       });
+
       uploadedImageData = result.secure_url;
     }
+
     const projectData = {
       ...data,
       projectImage: uploadedImageData ? uploadedImageData : "",
     };
+
     const addProject = await ProjectModel.create(projectData);
-    return new NextResponse(JSON.stringify(addProject), { status: 200 });
+
+    return NextResponse.json(addProject, { status: 200 });
   } catch (error) {
-    return new NextResponse({ status: 500, error: error.message });
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 };

@@ -1,11 +1,11 @@
 import "./globals.css";
-import { ThemeProvider } from "@/utils/theme-provider";
 import { Poppins } from "next/font/google";
-import AuthProvider from "@/utils/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { Suspense } from "react";
 import Loading from "@/components/Loading";
 import { GlobalContext } from "@/context/Index";
+import AuthProvider from "@/utils/AuthProvider";
+import { ThemeProvider } from "@/utils/ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],

@@ -3,14 +3,7 @@ import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
 import { authOptions } from "../auth/authOptions";
 import BlogModel from "../../../models/blogModel";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config({
-  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true,
-});
+import { cloudinary } from "@/utils/Cloudinary";
 
 export const GET = async (req, res) => {
   await connectToDB();
@@ -41,11 +34,17 @@ export const POST = async (request, response) => {
     const data = await request.json();
     let uploadedImageData = "";
     if (data.imageBlog) {
-      const fileBuffer = Buffer.from(data.imageBlog, "base64");
-      const myCloud = await cloudinary.uploader.upload(fileBuffer, {
+      const fileBuffer = Buffer.from(data.projectImage, "base64");
+      const fileUri = "data:image/png;base64," + fileBuffer.toString("base64");
+
+      const result = await cloudinary.uploader.upload(fileUri, {
+        invalidate: true,
+        resource_type: "auto",
         folder: "ashutoshportfolio",
+        use_filename: true,
       });
-      uploadedImageData = myCloud.secure_url;
+
+      uploadedImageData = result.secure_url;
     }
     const blogData = {
       ...data,
