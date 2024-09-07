@@ -6,4 +6,22 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export { cloudinary };
+export const uploadToCloudinary = (fileUri, fileName) => {
+    return new Promise((resolve, reject) => {
+        cloudinary.uploader.upload(fileUri, {
+            invalidate: true,
+            resource_type: "auto",
+            filename_override: fileName,
+            folder: "ashutoshprotfolio",
+            use_filename: true,
+        })
+            .then((result) => {
+                console.log("Uploaded");
+                resolve({ success: true, result });
+            })
+            .catch((error) => {
+                console.log(error.message, "Error uploading");
+                reject({ success: false, error });
+            });
+    });
+};

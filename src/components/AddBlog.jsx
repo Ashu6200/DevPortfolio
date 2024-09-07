@@ -2,27 +2,28 @@
 import React, { useState } from "react";
 import Highlight from "./Highlight";
 import Image from "next/image";
-import axios from "axios";
-import toast from "react-hot-toast";
+import { useSubmitBlog } from "@/hooks";
 
 const AddBlog = () => {
-  const [loading, setLoading] = useState(false);
+  const { submitBlog, loading } = useSubmitBlog();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [highlight, setHighlight] = useState([
     { title: "", points: [""] },
   ]);
   const [imageBlog, setImageBlog] = useState(null);
+  const [preview, setPreview] = useState(null)
   const [dragging, setDragging] = useState(false);
 
   const handleFileChange = e => {
     e.preventDefault();
     const file = e.target.files[0];
+    setImageBlog(file);
     if (file) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         if (fileReader.readyState === 2) {
-          setImageBlog(fileReader.result);
+          setPreview(fileReader.result)
         }
       };
       fileReader.readAsDataURL(file);
@@ -59,26 +60,11 @@ const AddBlog = () => {
   };
   const submit = async e => {
     e.preventDefault();
-    setLoading(true);
-    const data = {
-      title: title,
-      description: description,
-      higlights: highlight,
-      imageBlog: imageBlog,
-    };
-    try {
-      const res = await axios.post("/api/blog", data);
-      if (res.status === 200 || res.statusText === "OK") {
-        toast.success("Blog successfully posted");
-      } else {
-        toast.error("Failed to post blog");
-      }
-    } catch (error) {
-      console.error("Error posting blog", error);
-      toast.error("An error occurred");
-    } finally {
-      setLoading(false);
-    }
+    submitBlog(title, description, highlight, imageBlog);
+    setTimeout(() => {
+      reseTFields()
+    }, 1000);
+
   };
   return (
     <form>
@@ -125,10 +111,10 @@ const AddBlog = () => {
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
         >
-          {imageBlog ? (
+          {preview ? (
             <>
               <Image
-                src={imageBlog}
+                src={preview}
                 alt=''
                 width={100}
                 height={100}
@@ -136,7 +122,10 @@ const AddBlog = () => {
               />
               <button
                 className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8'
-                onClick={() => setImageBlog(null)}
+                onClick={() => {
+                  setPreview(null);
+                  setImageBlog(null)
+                }}
               >
                 Remove Image
               </button>

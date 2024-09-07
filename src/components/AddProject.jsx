@@ -2,18 +2,18 @@
 import React, { useState } from "react";
 import Highlight from "./Highlight";
 import Image from "next/image";
-import axios from "axios";
-import toast from "react-hot-toast";
 import CreatableSelect from "react-select/creatable";
+import { useSubmitProject } from "@/hooks";
 
 const AddProject = () => {
-  const [loading, setLoading] = useState(false);
+  const { submitProject, loading } = useSubmitProject();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [keyPoints, setKeyPoints] = useState([
     { title: "", points: [""] },
   ]);
   const [projectImage, setProjectImage] = useState("");
+  const [previewImage, setPreviewImage] = useState(null)
   const [githubLink, setGithubLink] = useState("");
   const [liveLink, setLiveLink] = useState("");
   const [technologies, setTechnologies] = useState([]);
@@ -34,11 +34,12 @@ const AddProject = () => {
   const handleFileChange = e => {
     e.preventDefault();
     const file = e.target.files[0];
+    setProjectImage(file)
     if (file) {
       const fileReader = new FileReader();
       fileReader.onload = () => {
         if (fileReader.readyState === 2) {
-          setProjectImage(fileReader.result);
+          setPreviewImage(fileReader.result);
         }
       };
       fileReader.readAsDataURL(file);
@@ -79,32 +80,11 @@ const AddProject = () => {
   };
   const submit = async e => {
     e.preventDefault();
-    setLoading(true);
-    const data = {
-      title: title,
-      description: description,
-      keyPoints: keyPoints,
-      projectImage: projectImage,
-      githubLink: githubLink,
-      liveLink: liveLink,
-      technologies: technologies.map((item) => item.value),
-      rating: rating,
-    };
-    try {
-      const res = await axios.post("/api/work", data);
-      console.log(res)
-      if (res.status === 200 || res.statusText === "OK") {
-        toast.success("Project successfully posted");
-        reseTFields();
-      } else {
-        toast.error("Failed to post Project");
-      }
-    } catch (error) {
-      console.error("Error posting project", error);
-      toast.error("An error occurred");
-    } finally {
-      setLoading(false);
-    }
+    submitProject(title, description, keyPoints, projectImage, githubLink, liveLink, technologies, rating)
+    setTimeout(() => {
+      reseTFields()
+    }, 1000)
+
   };
   return (
     <form>
@@ -152,10 +132,10 @@ const AddProject = () => {
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
         >
-          {projectImage ? (
+          {previewImage ? (
             <>
               <Image
-                src={projectImage}
+                src={previewImage}
                 alt=''
                 width={100}
                 height={100}
@@ -163,7 +143,7 @@ const AddProject = () => {
               />
               <button
                 className='w-full 800px:w-[180px] flex items-center justify-center h-[40px] bg-[#755BB4] text-center text-[#fff] rounded mt-8 text-[16px]'
-                onClick={() => setProjectImage(null)}
+                onClick={() => { setPreviewImage(null), setProjectImage(null) }}
               >
                 Remove Image
               </button>

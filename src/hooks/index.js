@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export const useGetAllblog = () => {
     const [isloading, setIsLoading] = useState(false)
@@ -123,3 +124,70 @@ export const useGetSingleBlog = (id) => {
 
     return { data, error, loading, refetch: fetchData };
 };
+
+export const useSubmitBlog = () => {
+    const [loading, setLoading] = useState(false);
+
+    const submitBlog = async (title, description, highlight, imageBlog) => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("highlights", JSON.stringify(highlight));
+        formData.append("imageBlog", imageBlog);
+        try {
+            const res = await axios.post("/api/blog", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            if (res.status === 201) {
+                toast.success("Blog successfully posted");
+            } else {
+                toast.error("Failed to post blog");
+            }
+        } catch (error) {
+            console.error("Error posting blog", error);
+            toast.error("An error occurred");
+        } finally {
+            setLoading(false);
+        }
+    }
+    return { submitBlog, loading };
+}
+export const useSubmitProject = () => {
+    const [loading, setLoading] = useState(false);
+
+    const submitProject = async (title, description, keyPoints, projectImage, githubLink, liveLink, technologies, rating) => {
+        setLoading(true);
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("description", description);
+        formData.append("keyPoints", JSON.stringify(keyPoints));
+        formData.append("projectImage", projectImage);
+        formData.append("githubLink", githubLink);
+        formData.append("liveLink", liveLink);
+        technologies.forEach((tech, index) => {
+            formData.append(`technologies[${index}]`, tech);
+        });
+        formData.append("rating", rating);
+        try {
+            const res = await axios.post("/api/work", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+            if (res.status === 201) {
+                toast.success("Blog successfully posted");
+            } else {
+                toast.error("Failed to post blog");
+            }
+        } catch (error) {
+            console.error("Error posting blog", error);
+            toast.error("An error occurred");
+        } finally {
+            setLoading(false);
+        }
+    }
+    return { submitProject, loading };
+}

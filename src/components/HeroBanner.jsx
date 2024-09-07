@@ -1,4 +1,4 @@
-import { rgbDataURL, socialIcons } from "@/utils";
+import { socialIcons } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -50,7 +50,6 @@ const HeroBanner = () => {
                   width={300}
                   height={400}
                   priority={false}
-                  quality={75}
                 />
               </div>
             </div>

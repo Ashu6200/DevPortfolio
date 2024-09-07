@@ -61,12 +61,12 @@ const Navbar = () => {
                   href={"/admin"}
                   className='flex items-center justify-center'
                 >
-                  <span className='dark:text-[#755BB4] text-[#755BB4] text-[14px] font-[600]'>
+                  <span className='dark:text-[#fff] text-[#000] text-[14px] font-[600]'>
                     Hi {name}
                   </span>
                 </Link>
               ) : (
-                <span className='dark:text-[#755BB4] text-[#755BB4] text-[14px] font-[600]'>
+                <span className='dark:text-[#fff] text-[#000] text-[14px] font-[600]'>
                   Hi {name}
                 </span>
               )}
