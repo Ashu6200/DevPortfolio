@@ -7,7 +7,7 @@ import Link from "next/link";
 const AdminSideBar = () => {
   const pathname = usePathname();
   return (
-    <div className='w-full h-full flex flex-col gap-5 p-[20px] bg-white dark:bg-black glass max-[890px]:flex-row max-[890px]:overflow-x-scroll max-[890px]:gap-5 max-[890px]:p-[10px] max-[890px]:items-center'>
+    <div className='w-full h-full flex flex-col gap-5 p-[20px] glass max-[890px]:flex-row max-[890px]:overflow-x-scroll max-[890px]:gap-5 max-[890px]:p-[10px] max-[890px]:items-center'>
       {AdminSections.map((nav, i) => (
         <Link key={i} href={`${nav.link}`}>
           <p

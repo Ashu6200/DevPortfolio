@@ -6,43 +6,45 @@ export const useGetAllblog = () => {
     const [isloading, setIsLoading] = useState(false)
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        const getData = async () => {
-            setIsLoading(true);
-            try {
-                const res = await axios.get("/api/blog");
-                setData(res.data);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false);
-            }
+    const getData = async () => {
+        setIsLoading(true);
+        try {
+            const res = await axios.get("/api/blog");
+            setData(res.data);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
         }
+    }
+    useEffect(() => {
         getData();
     }, []);
+    const refetchData = getData
 
-    return { data, isloading, setData };
+    return { data, isloading, setData, refetchData };
 }
 export const useGetAllProject = () => {
     const [isloading, setIsLoading] = useState(false)
     const [data, setData] = useState([]);
 
-    useEffect(() => {
-        const getData = async () => {
-            setIsLoading(true);
-            try {
-                const res = await axios.get(`/api/work`);
-                setData(res.data);
-            } catch (error) {
-                console.error(error);
-            } finally {
-                setIsLoading(false);
-            }
+    const getData = async () => {
+        setIsLoading(true);
+        try {
+            const res = await axios.get(`/api/work`);
+            setData(res.data);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsLoading(false);
         }
+    }
+    useEffect(() => {
         getData();
     }, []);
+    const refetchData = getData
 
-    return { data, isloading, setData };
+    return { data, isloading, setData, refetchData };
 }
 export const useGetAllSuggestion = () => {
     const [isloading, setIsLoading] = useState(false)
@@ -126,6 +128,7 @@ export const useGetSingleBlog = (id) => {
 };
 
 export const useSubmitBlog = () => {
+    const { fetchData } = useGetAllblog()
     const [loading, setLoading] = useState(false);
 
     const submitBlog = async (title, description, highlight, imageBlog) => {
@@ -143,6 +146,7 @@ export const useSubmitBlog = () => {
             });
             if (res.status === 201) {
                 toast.success("Blog successfully posted");
+                fetchData()
             } else {
                 toast.error("Failed to post blog");
             }
@@ -156,6 +160,7 @@ export const useSubmitBlog = () => {
     return { submitBlog, loading };
 }
 export const useSubmitProject = () => {
+    const { fetchData } = useGetAllProject()
     const [loading, setLoading] = useState(false);
 
     const submitProject = async (title, description, keyPoints, projectImage, githubLink, liveLink, technologies, rating) => {
@@ -179,6 +184,7 @@ export const useSubmitProject = () => {
             });
             if (res.status === 201) {
                 toast.success("Blog successfully posted");
+                fetchData()
             } else {
                 toast.error("Failed to post blog");
             }

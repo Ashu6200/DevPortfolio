@@ -6,7 +6,7 @@ const Page = ({ params }) => {
   const projectId = params.id;
   return (
     <div className='w-full h-full overflow-y-scroll'>
-      <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white'>
+      <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 '>
         Edit Project -
       </h1>
       <Editproject projectId={projectId} />

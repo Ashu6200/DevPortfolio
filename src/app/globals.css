@@ -19,6 +19,56 @@
   width: 0.5px;
 }
 
+.blurspot {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: -21.83px;
+  right: 0;
+  background-color: rgba(252, 22, 91, 1);
+  filter: blur(3500px);
+}
+
+.blurspot2 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 57.48px;
+  left: 210.15px;
+  background-color: rgba(22, 252, 210, 1);
+  filter: blur(3500px);
+}
+
+.blurspot3 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(27, 119, 228, 1);
+  filter: blur(3500px);
+}
+
+@media screen and (max-width: 480px) {
+  .blurspot {
+    width: 150px;
+    height: 150px;
+    filter: blur(300px);
+  }
+
+  .blurspot2 {
+    width: 150px;
+    height: 150px;
+    filter: blur(300px);
+  }
+
+  .blurspot3 {
+    width: 150px;
+    height: 150px;
+    filter: blur(300px);
+  }
+}
+
 .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
   padding: 0.5rem !important;
   color: black !important;

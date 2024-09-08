@@ -22,20 +22,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body
-        className={`${poppins.className} bg-white bg-no-repeat dark:bg-black duration-300 m-2`}
-      >
-        <AuthProvider>
-          <GlobalContext>
-            <ThemeProvider attribute='class' defaultTheme='light'>
+      <AuthProvider>
+        <GlobalContext>
+          <body
+            className={`${poppins.className} bg-white bg-no-repeat dark:bg-black duration-300 m-2 relative`}
+          >
+            <div className={"blurspot"}></div>
+            <div className={"blurspot2"}></div>
+            <div className={"blurspot3"}></div>
+            <ThemeProvider attribute='class' defaultTheme='dark'>
               <Toaster position='top-right' />
               <Suspense fallback={<Loading />}>
                 {children}
               </Suspense>
             </ThemeProvider>
-          </GlobalContext>
-        </AuthProvider>
-      </body>
+          </body>
+        </GlobalContext>
+      </AuthProvider>
     </html>
   );
 }

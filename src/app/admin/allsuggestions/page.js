@@ -7,11 +7,11 @@ const Page = () => {
   const { suggestionAllData } = useGlobalContext()
   return (
     <div className='w-full h-full overflow-y-scroll'>
-      <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 sticky top-0 dark:bg-black bg-white'>
+      <h1 className='text-[#755BB4] text-[24px] font-[600] mb-3 '>
         All Suggesstion
       </h1>
       <div className='flex flex-col gap-[20px]'>
-        {suggestionAllData &&
+        {Array.isArray(suggestionAllData) &&
           suggestionAllData.map((item) => {
             return <SuggestionCard item={item} key={item._id} />;
           })}

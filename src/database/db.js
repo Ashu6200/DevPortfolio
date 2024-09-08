@@ -8,7 +8,11 @@ export const connectToDB = async () => {
     return;
   }
   try {
-    await mongoose.connect(process.env.MONGO_CLIENT_URL);
+    await mongoose.connect(process.env.MONGO_CLIENT_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 30000,
+    });
     isConnected = true;
     console.log("MongoDB connected");
   } catch (error) {
