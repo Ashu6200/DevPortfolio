@@ -16,11 +16,9 @@ export const uploadToCloudinary = (fileUri, fileName) => {
             use_filename: true,
         })
             .then((result) => {
-                console.log("Uploaded");
                 resolve({ success: true, result });
             })
             .catch((error) => {
-                console.log(error.message, "Error uploading");
                 reject({ success: false, error });
             });
     });

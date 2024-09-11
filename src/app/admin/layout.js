@@ -1,6 +1,8 @@
+'use client'
 import Navbar from "@/components/Navbar";
-import { AdminProtected } from "@/utils/ProtectedRoutes";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
+import { redirect } from "next/navigation";
 import React from "react";
 const DynamicSideBar = dynamic(async () => import("@/components/AdminSideBar"), {
   ssr: false,
@@ -8,8 +10,13 @@ const DynamicSideBar = dynamic(async () => import("@/components/AdminSideBar"), 
 });
 
 const Adminlayout = ({ children }) => {
+  const { data } = useSession()
+  const isAdmin = data?.user.isAdmin
+  if (!isAdmin) {
+    return redirect("/")
+  }
   return (
-    <AdminProtected>
+    <>
       <Navbar />
       <div className='w-full h-[calc(100vh_-_115px)] pt-4'>
         <div className='flex w-full h-full gap-5 max-[890px]:flex-col'>
@@ -21,7 +28,7 @@ const Adminlayout = ({ children }) => {
           </div>
         </div>
       </div>
-    </AdminProtected>
+    </>
   );
 };
 
